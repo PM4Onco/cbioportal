@@ -807,6 +807,10 @@
 
   <pluginRepositories>
     <pluginRepository>
+      <id>jboss-third-party</id>
+      <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/</url>
+    </pluginRepository>
+    <pluginRepository>
       <id>maven-snapshots</id>
       <url>https://repository.apache.org/content/repositories/snapshots/</url>
     </pluginRepository>
@@ -818,6 +822,14 @@
   </pluginRepositories>
 
   <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+    <repository>
+      <id>jboss-third-party</id>
+      <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/</url>
+    </repository>
     <!-- needed for the opensaml dependency -->
     <repository>
       <id>shiboleth</id>
