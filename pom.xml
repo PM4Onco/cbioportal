@@ -447,7 +447,6 @@
     </dependencies>
   </dependencyManagement>
 
-<<<<<<< HEAD
   <build>
     <finalName>cbioportal</finalName>
     <pluginManagement>
@@ -459,7 +458,6 @@
         </plugin>
       </plugins>
     </pluginManagement>
-=======
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -669,7 +667,6 @@
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
 		</dependency>
->>>>>>> 0c58ca8bca (fix mongo dependency)
 
     <filters>
       <filter>src/main/resources/application.properties</filter>
