@@ -18,7 +18,7 @@
 
   <properties>
     <m2e.apt.activation>jdt_apt</m2e.apt.activation>
-    <!-- <maven.compiler.release>21</maven.compiler.release>-->
+    <maven.compiler.release>21</maven.compiler.release>
     <sonar.java.source>21</sonar.java.source>
     <java.version>21</java.version>
     <maven.compiler.source>21</maven.compiler.source>
@@ -76,6 +76,7 @@
     <io.swagger.version>1.6.3</io.swagger.version>
     <mybatis.starter.version>3.0.4</mybatis.starter.version>
     <testcontainers.version>1.21.3</testcontainers.version>
+    <mockserver.version>5.15.0</mockserver.version>
     <opensaml.version>4.1.1</opensaml.version>
 
     <!-- Third Party -->
@@ -95,6 +96,7 @@
     <datumbox.version>0.8.2</datumbox.version>
     <selenium_chrome_driver.version>3.14.0</selenium_chrome_driver.version>
     <selenium.version>4.31.0</selenium.version>
+    <dasniko-testcontainer-keycloak.version>3.2.0</dasniko-testcontainer-keycloak.version>
     <sentry.version>7.1.0</sentry.version>
     <clickhouse_testcontainer.version>1.19.7</clickhouse_testcontainer.version>
     <bouncy_castle.version>1.78</bouncy_castle.version>
@@ -417,6 +419,26 @@
       <groupId>com.zaxxer</groupId>
       <artifactId>HikariCP</artifactId>
     </dependency>
+
+    <!-- Additional test dependencies from legacy pom -->
+    <dependency>
+      <groupId>org.mock-server</groupId>
+      <artifactId>mockserver-client-java</artifactId>
+      <version>${mockserver.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>mockserver</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.dasniko</groupId>
+      <artifactId>testcontainers-keycloak</artifactId>
+      <version>${dasniko-testcontainer-keycloak.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <dependencyManagement>
@@ -458,215 +480,6 @@
         </plugin>
       </plugins>
     </pluginManagement>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>pl.pragmatists</groupId>
-			<artifactId>JUnitParams</artifactId>
-			<version>1.1.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>${mybatis.starter.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.redisson</groupId>
-			<artifactId>redisson</artifactId>
-			<version>${redisson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-math3</artifactId>
-			<version>${commons-math3.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>${springdoc.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-collections4</artifactId>
-			<version>${apache-commons-collections.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt-api</artifactId>
-			<version>${io-jsonwebtoken.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt-impl</artifactId>
-			<version>${io-jsonwebtoken.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt-jackson</artifactId>
-			<version>${io-jsonwebtoken.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>bson</artifactId>
-			<version>${mongodb_bson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${google_guava.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>${commons_codec.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-validator</groupId>
-			<artifactId>commons-validator</artifactId>
-			<version>${commons_validator.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.romain-warnan</groupId>
-			<artifactId>simple-java-bitly</artifactId>
-			<version>${simple_java_bitly.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.ehcache</groupId>
-			<artifactId>ehcache</artifactId>
-			<version>${ehcache.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.googlecode.json-simple</groupId>
-			<artifactId>json-simple</artifactId>
-			<version>${json_simple.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-cache</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>mongo-java-driver</artifactId>
-			<version>${mongo_java_driver.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.datumbox</groupId>
-			<artifactId>datumbox-framework-lib</artifactId>
-			<version>${datumbox.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-		</dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-jwt</artifactId>
-            <version>1.1.1.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>jwks-rsa</artifactId>
-            <version>0.22.1</version>
-        </dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql_driver.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium.version}</version>
-            <scope>test</scope>
-        </dependency>
-		<dependency>
-			<groupId>org.testcontainers</groupId>
-			<artifactId>testcontainers</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.testcontainers</groupId>
-			<artifactId>mysql</artifactId>
-			<scope>test</scope>
-		</dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>mockserver</artifactId>
-            <scope>test</scope> 
-        </dependency>
-        <dependency>
-            <groupId>org.mock-server</groupId>
-            <artifactId>mockserver-client-java</artifactId>
-            <version>${mockserver.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.dasniko</groupId>
-            <artifactId>testcontainers-keycloak</artifactId>
-            <version>${dasniko-testcontainer-keycloak.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-			<groupId>org.testcontainers</groupId>
-			<artifactId>selenium</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>test</scope>
-		</dependency>
 
     <filters>
       <filter>src/main/resources/application.properties</filter>
@@ -1016,10 +829,6 @@
 
   <pluginRepositories>
     <pluginRepository>
-      <id>jboss-third-party</id>
-      <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/</url>
-    </pluginRepository>
-    <pluginRepository>
       <id>maven-snapshots</id>
       <url>https://repository.apache.org/content/repositories/snapshots/</url>
     </pluginRepository>
@@ -1031,14 +840,6 @@
   </pluginRepositories>
 
   <repositories>
-    <repository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
-    </repository>
-    <repository>
-      <id>jboss-third-party</id>
-      <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/</url>
-    </repository>
     <!-- needed for the opensaml dependency -->
     <repository>
       <id>shiboleth</id>
