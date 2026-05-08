@@ -1,5 +1,19 @@
 name: Core tests
-on: [push, pull_request]
+
+on:
+  push:
+  pull_request_target:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch or PR to test (default: main)'
+        required: false
+        default: 'master'
+
+permissions:
+      id-token: write   # This is required for requesting the JWT
+      contents: read    # This is required for actions/checkout
+
 jobs:
   build:
     name: Setup and Test
@@ -12,6 +26,9 @@ jobs:
         ports:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=10
+    env:
+      TEST_DB_CLICKHOUSE_PASSWORD: ${{ secrets.TEST_DB_CLICKHOUSE_PASSWORD }}
+      TEST_DB_MYSQL_PASSWORD: ${{ secrets.TEST_DB_MYSQL_PASSWORD }}
     steps:
       - name: 'Checkout cbioportal repo'
         uses: actions/checkout@v2
@@ -23,7 +40,7 @@ jobs:
           website: oracle.com
           release: 21
       - name: 'Cache Maven packages'
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
@@ -45,19 +62,37 @@ jobs:
         working-directory: ./cbioportal
         run: |
           cp src/main/resources/application.properties.EXAMPLE src/main/resources/application.properties
+      - name: 'Create settings.xml for github packages'
+        working-directory: ./cbioportal
+        run: |
+          echo "<settings><servers><server><id>github</id><username>${{ github.actor }}</username><password>${{ secrets.GITHUB_TOKEN }}</password></server></servers></settings>" > settings.xml
       - name: 'Build cBioPortal once without tests'
         working-directory: ./cbioportal
         run: |
-          mvn -q -U -Ppublic -DskipTests clean install
+          mvn --settings settings.xml -q -U -Ppublic -DskipTests clean install
       - name: 'Build cbioportal with tests'
         working-directory: ./cbioportal
         run: |
-          mvn -q -U -Ppublic clean install
+          mvn --settings settings.xml -q -U -Ppublic clean install
       - name: 'Run tests separately'
         working-directory: ./cbioportal
         run: |
           mvn -U -Ppublic test -Ddb.test.username=cbio_user -Ddb.test.password=somepassword
       - name: 'Run integration tests separately'
+        if: ${{ github.event_name != 'pull_request_target' && env.TEST_DB_CLICKHOUSE_PASSWORD != '' }}
         working-directory: ./cbioportal
         run: |
-          mvn -U -Ppublic integration-test -Ddb.test.username=cbio_user -Ddb.test.password=somepassword
+          mvn verify -Pintegration-test
+      - name: 'Skip integration tests (missing clickhouse secret)'
+        if: ${{ github.event_name == 'pull_request_target' || env.TEST_DB_CLICKHOUSE_PASSWORD == '' }}
+        run: |
+          echo "Skipping integration tests on pull_request_target or when TEST_DB_CLICKHOUSE_PASSWORD is not configured."
+      - name: 'Run e2e tests separately'
+        if: ${{ github.event_name != 'pull_request_target' && env.TEST_DB_CLICKHOUSE_PASSWORD != '' }}
+        working-directory: ./cbioportal
+        run: |
+          mvn verify -Pe2e-test
+      - name: 'Skip e2e tests (missing clickhouse secret)'
+        if: ${{ github.event_name == 'pull_request_target' || env.TEST_DB_CLICKHOUSE_PASSWORD == '' }}
+        run: |
+          echo "Skipping e2e tests on pull_request_target or when TEST_DB_CLICKHOUSE_PASSWORD is not configured."

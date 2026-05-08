@@ -11,7 +11,7 @@ if they have already been constructed. They would only be constructed for the in
 The portal is configured to use Ehcache or Redis for backend caching. Ehcache supports a hybrid (disk + heap),
 disk-only, and heap-only mode. Redis stores the cache in memory and periodically writes the updated data to disk. Cache
 configuration is specified inside `application.properties`(more
-information [here](/deployment/customization/application.properties-Reference.md#cache-settings)).
+information [here](application.properties-Reference.md#cache-settings)).
 
 ## Creating additional caches
 
@@ -34,7 +34,7 @@ manager.createCache(appName + "ClinicalDataCache", config);
 ```
 
 You also need to create a new cache resolver
-in [RedisConfig.java](https://github.com/cBioPortal/cbioportal/blob/master/persistence/persistence-api/src/main/java/org/cbioportal/persistence/config/RedisConfig.java):
+in [RedisConfig.java](https://github.com/cBioPortal/cbioportal/blob/master/src/main/java/org/cbioportal/persistence/config/RedisConfig.java):
 
 ```
 @Bean

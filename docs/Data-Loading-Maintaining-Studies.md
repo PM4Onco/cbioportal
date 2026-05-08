@@ -6,6 +6,8 @@ This script can also be used to delete studies.
 - [Requirements](#requirements)
 - [Importing a study without validation](#importing-a-study-without-validation)
 - [Deleting a study](#deleting-a-study)
+- [Deleting patients](#deleting-patients)
+- [Deleting samples](#deleting-samples)
 
 ## Requirements
 This script requires `$PORTAL_HOME` to point to the folder containing your
@@ -26,6 +28,14 @@ For example:
 ```
 ./cbioportalImporter.py -s ../../../test/scripts/test_data/study_es_0/
 ```
+
+## Importing part of the data
+To import only some new or updated data entries, you can specify `-d` instead `-s` option:
+```
+./cbioportalImporter.py -d <path to data directory>
+```
+Although the -d option accepts a directory that follows the same structure as the study directory, not all data types are supported for incremental upload.
+For more details on incremental data loading, see [this page](./Incremental-Data-Loading.md).
 
 ## Deleting a study
 To remove a study, run: 
@@ -50,3 +60,27 @@ You can also remove multiple studies at once by passing the Cancer Study Ids sep
 ./cbioportalImporter.py -c remove-study -id study1_id,study2_id,study3_id
 ```
 Where `study1_id`, `study2_id` and `study3_id` are the Cancer Study IDs of the studies you would like to remove.
+
+## Deleting patients
+To remove patients (and their associated samples and data) from one or more studies, run:
+```
+./cbioportalImporter.py remove-patients --study_ids <study_ids> --patient_ids <patient_ids>
+```
+Where `study_ids` is a comma-separated list of Cancer Study IDs to search and `patient_ids` is a comma-separated list of patient identifiers to delete.
+
+For example:
+```
+./cbioportalImporter.py remove-patients --study_ids study1_id --patient_ids patientA,patientB
+```
+
+## Deleting samples
+To remove specific samples from one or more studies, run:
+```
+./cbioportalImporter.py remove-samples --study_ids <study_ids> --sample_ids <sample_ids>
+```
+Where `study_ids` is a comma-separated list of Cancer Study IDs to search and `sample_ids` is a comma-separated list of sample identifiers to delete.
+
+For example:
+```
+./cbioportalImporter.py remove-samples --study_ids study1_id,study2_id --sample_ids sampleX,sampleY
+```

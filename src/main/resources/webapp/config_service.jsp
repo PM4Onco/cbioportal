@@ -18,7 +18,6 @@
             "google_analytics_profile_id",
             "analytics_report_url",
             "oncoprint.hide_vus.default",
-            "mycancergenome.show",
             "oncokb.public_api.url",
             "oncokb.merge_icons_by_default",
             "digitalslidearchive.iframe.url",
@@ -35,7 +34,6 @@
             "show.hotspot",
             "show.oncokb",
             "show.cbioportal",
-            "show.cosmic",
             "show.civic",
             "show.genomenexus",
             "show.genomenexus.annotation_sources",
@@ -84,6 +82,7 @@
             "skin.show_tutorials_tab",
             "skin.show_web_api_tab",
             "skin.show_tweet_button",
+            "skin.show_donate_button",
             "skin.patientview.filter_genes_profiled_all_samples",
             "skin.patientview.show_mskcc_slide_viewer",
             "skin.home_page.show_unauthorized_studies",
@@ -127,7 +126,8 @@
             "study_download_url",
             "skin.home_page.show_reference_genome",
             "vaf.sequential_mode.default",
-            "vaf.log_scale.default"
+            "vaf.log_scale.default",
+            "download_custom_buttons_json",
         };
 
 

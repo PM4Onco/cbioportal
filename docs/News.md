@@ -1,3 +1,223 @@
+## Oct 31, 2025
+*   **Added data** consisting of 9,749 samples from 13 studies:
+    * [Mixed Tumors - MiMSI Cohort (MSK, Nat Commun 2024)](https://www.cbioportal.org/study/summary?id=pancan_mimsi_msk_2024) *5033 samples*
+    * [Cancer Cell Line Encyclopedia (Broad, Nat Rev Cancer 2025)](https://www.cbioportal.org/study/summary?id=ccle_broad_2025) *1970 samples*
+    * [Colorectal Cancer- ChangKang Project (SYSUCC, Nat Commun 2022)](https://www.cbioportal.org/study/summary?id=crc_sysucc_2022) *1015 samples*
+	* [Cancer Cell Line Encyclopedia (Genentech, Nat biotech 2014)](https://www.cbioportal.org/study/summary?id=ccle_genentech_2014) *675 samples*
+    * [Bladder Urothelial Carcinoma SWOG S1314 Trial (MSK, JCO Precis Oncol 2024)](https://www.cbioportal.org/study/summary?id=blca_msk_2024) *184 samples*
+    * [Pediatric solid tumor PDXs (UTHSA, Nat Commun 2023)](https://www.cbioportal.org/study/summary?id=pancan_pdx_uthsa_2023) *136 samples*
+    * [Solitary Fibrous Tumors (SYSUCC, Nat Commun 2023)](https://www.cbioportal.org/study/summary?id=sft_sysucc_2023) *131 samples*
+    * [Melanoma (MSK, Cell 2017) - iAtlas Harmonized](https://www.cbioportal.org/study/summary?id=mel_iatlas_riaz_nivolumab_2017) *107 samples*
+    * [Lung Adenocarcinoma (CAS, Cell 2020)](https://www.cbioportal.org/study/summary?id=luad_cas_2020) *103 samples*
+    * [Hereditary SDHB-Mutant Pheochromocytomas and Paragangliomas (A5 Consortium, Nature 2025)](https://www.cbioportal.org/study/summary?id=hnsc_a5consortium_2025) *94 samples*
+    * [Triple Negative Breast Cancer (DLDCCC, Cancer Discov 2022)](https://www.cbioportal.org/study/summary?id=brca_dldccc_2022) *75 samples*
+    * [Colorectal Adenocarcinoma (DFCI/Orion, BioRxiv 2024)](https://www.cbioportal.org/study/summary?id=crc_orion_2024) *74 samples*
+    * [Schwannoma (Children's Tumor Foundation, Acta Neuropathologica 2020)](https://www.cbioportal.org/study/summary?id=schw_ctf_synodos_2025) *52 samples*
+
+## May 06, 2025
+*   **Added data** consisting of 4,571 samples from 10 studies:
+    * [Pancreatic Adenocarcinoma (MSK, Nat Med 2024)](https://www.cbioportal.org/study/summary?id=pdac_msk_2024) *2336 samples*
+    * [Cerebrospinal Fluid Circulating Tumor DNA (MSK, Acta Neuropathol Commun 2024)](https://www.cbioportal.org/study/summary?id=csf_msk_2024) *1007 samples*
+    * [Ovarian Cancer (Gray Foundation, Cancer Discov 2024)](https://www.cbioportal.org/study/summary?id=ovary_geomx_gray_foundation_2024) *567 samples*
+	* [Normal Melanocytes (UCSF, Nature 2020)](https://www.cbioportal.org/study/summary?id=normal_skin_melanocytes_2024) *153 samples*
+    * [Normal Keratinocytes from human skin (UCSF, BioRxiv 2024)](https://www.cbioportal.org/study/summary?id=normal_skin_keratinocytes_2024) *136 samples*
+    * [BRAF Fusions - ARCHER Clinical Sequencing Cohort (MSK, Clin Cancer Res 2024)](https://www.cbioportal.org/study/summary?id=braf_msk_archer_2024) *107 samples*
+    * [BRAF Fusions - IMPACT Clinical Sequencing Cohort (MSK, Clin Cancer Res 2024)](https://www.cbioportal.org/study/summary?id=braf_msk_impact_2024) *105 samples*
+    * [Sarcoma (UCLA, Cell 2024)](https://www.cbioportal.org/study/summary?id=sarcoma_ucla_2024) *63 samples*
+    * [Classical Hodgkins Lymphoma (SCCC, Blood Cancer Discov 2023)](https://www.cbioportal.org/study/summary?id=chl_sccc_2023) *61 samples*
+    * [Normal Fibroblasts from human skin (UCSF, BioRxiv 2024)](https://www.cbioportal.org/study/summary?id=normal_skin_fibroblast_2024) *18 samples*
+
+*   **Gene Tables Update:** Updated tables of genes (main and alias), based on [Oct 1, 2024 HGNC release](https://www.genenames.org/download/archive/monthly/tsv/). See seedDB release notes [here](https://github.com/cBioPortal/datahub/tree/master/seedDB#latest-seed-database-schema-2131) for details.
+
+## April 17, 2025
+* Released a [new about page](https://about.cbioportal.org/), which includes a roadmap and an overview of 2024 accomplishments.
+
+## April 11, 2025
+*   **New Feature:** The Plots tab now has an option to draw a line connecting multiple samples from the same patient. This option is  available when data is visualized as a box plot and when there is data from multiple samples from the same patient. [Example: Mutation count in a cohort of primary grade II glioma vs patient-matched recurrences of all grades](https://www.cbioportal.org/study/plots?id=lgg_ucsf_2014&plots_horz_selection=%7B%22dataType%22%3A%22clinical_attribute%22%2C%22selectedDataSourceOption%22%3A%22SAMPLE_TYPE%22%7D&plots_vert_selection=%7B%22dataType%22%3A%22clinical_attribute%22%2C%22selectedDataSourceOption%22%3A%22MUTATION_COUNT%22%7D&plots_coloring_selection=%7B%22selectedOption%22%3A%22undefined_%7B%5C%22clinicalAttributeId%5C%22%3A%5C%22GRADE%5C%22%2C%5C%22patientAttribute%5C%22%3Afalse%2C%5C%22studyId%5C%22%3A%5C%22lgg_ucsf_2014%5C%22%7D%22%7D)
+![image](https://github.com/user-attachments/assets/c6f54905-6167-40b9-af7f-0ef07ad21fdb)
+
+
+## January 28, 2025
+*   **Enhancement:** You can now re-order the stacked bar charts in the Plots Tab alphabetically, by the number of samples or by the data category in the plot. This enhancement allows you to create more ready-to-publish figures using cBioPortal. As usual, the plots created in the Plots Tab can be downloaded in different formats. [Example: specimen type for each cancer type in MSK-IMPACT Clinical Sequencing Cohort (MSK, Nat Med 2017](https://www.cbioportal.org/study/plots?id=msk_impact_2017&plots_horz_selection=%7B%22dataType%22%3A%22clinical_attribute%22%2C%22selectedDataSourceOption%22%3A%22CANCER_TYPE%22%2C%22mutationCountBy%22%3A%22MutationType%22%2C%22logScale%22%3A%22false%22%7D&plots_vert_selection=%7B%22selectedGeneOption%22%3A7157%2C%22dataType%22%3A%22clinical_attribute%22%2C%22selectedDataSourceOption%22%3A%22SPECIMEN_TYPE%22%2C%22mutationCountBy%22%3A%22MutationType%22%2C%22logScale%22%3A%22false%22%7D&plots_coloring_selection=%7B%7D)
+    
+![image](https://github.com/user-attachments/assets/c147794f-390a-4dec-a252-8fd324ea72e9)
+
+
+## December 18, 2024
+*   **Added data** consisting of 34,904 samples from 9 studies:
+    * [MSK-CHORD (MSK, Nature 2024)](https://www.cbioportal.org/study/summary?id=msk_chord_2024) *25040 samples*
+    * [MSK ctDNA Sequencing Cohort (MSK, Nature Med 2024)](https://www.cbioportal.org/study/summary?id=msk_ctdna_vte_2024) *5567 samples*
+    * [Prostate Cancer (MSK, Clin Cancer Res 2024)](https://www.cbioportal.org/study/summary?id=prostate_msk_2024) *2260 samples*
+	* [Hepatocellular Carcinoma (MSK, Clin Cancer Res 2024)](https://www.cbioportal.org/study/summary?id=hcc_msk_2024) *1370 samples*
+    * [Pancreatic Cancer (MSK, Cancer Cell 2024)](https://www.cbioportal.org/study/summary?id=pancreas_msk_2024) *395 samples*
+    * [Metastatic Pancreatic Neuroendocrine Tumor (MSK, JCO Precis Oncol 2018)](https://www.cbioportal.org/study/summary?id=panet_msk_2018) *96 samples*
+    * [Recurrent CNS Lymphoma - Ibrutinib Long Term Follow Up (MSK, Cancer Cell 2024)](https://www.cbioportal.org/study/summary?id=pcnsl_msk_2024) *86 samples*
+    * [Metastatic Breast Cancer (DFCI, Cancer Discovery 2020)](https://www.cbioportal.org/study/summary?id=brca_dfci_2020) *59 samples*
+    * [Atypical Small Cell Lung Cancer (MSK, Cancer Discovery 2024)](https://www.cbioportal.org/study/summary?id=asclc_msk_2024) *31 samples*
+    
+*   **Data Improvement**
+
+    * TBL scores addition: Tumor Break Load (TBL) scores is added to PCAWG, CCLE, and all 32 TCGA Pan-Cancer studies. The data is sourced from [Lakbir et al., bioRxiv 2024](https://www.biorxiv.org/content/10.1101/2024.12.08.626771v1.full) and [Lakbir et al., Eur J Cancer 2022](https://pubmed.ncbi.nlm.nih.gov/36334560/)
+
+## December 11, 2024
+*   **Added data** consisting of 5,567 samples from 6 TARGET studies from the [Genomic Data Commons (GDC)](https://gdc.cancer.gov) as part of the [Cancer Research Data Commons (NCI-CRDC)](https://datacommons.cancer.gov) initiative.
+    * [Acute Myeloid Leukemia (TARGET, GDC)](https://www.cbioportal.org/study/summary?id=aml_target_gdc) *2482 samples*
+    * [B-Lymphoblastic Leukemia/Lymphoma - Phase II (TARGET, GDC)](https://www.cbioportal.org/study/summary?id=bll_target_gdc) *1004 samples*
+    * [Neuroblastoma (TARGET, GDC)](https://www.cbioportal.org/study/summary?id=nbl_target_gdc) *840 samples*
+    * [Wilms' Tumor (TARGET, GDC)](https://www.cbioportal.org/study/summary?id=wt_target_gdc) *655 samples*
+    * [Acute Leukemias of Ambiguous Lineage - Phase III (TARGET, GDC)](https://www.cbioportal.org/study/summary?id=alal_target_gdc) *351 samples*
+    * [Osteosarcoma (TARGET, GDC)](https://www.cbioportal.org/study/summary?id=os_target_gdc) *235 samples*
+
+
+## November 18, 2024
+*   **New Feature:** New data source [AlphaMissense](https://alphamissense.hegelab.org/) is now integrated in Mutations tab. View the AlphaMissense data in the [Mutation Table](https://bit.ly/48yOi7A) and the [Mutation Mapper Tool](https://www.cbioportal.org/mutation_mapper).
+    
+    ![image](https://github.com/user-attachments/assets/5c43b1b7-83e0-4bf2-b8ed-e43eda0f02c8)
+
+
+## October 30, 2024
+*   **New integration**: Structural Variants (SV)s of the [PCAWG dataset](https://www.cbioportal.org/study/summary?id=pancan_pcawg_2020) can now be viewed in Chromoscope on the _Patient View_ (Funding by [the Fund for Innovation in Cancer Informatics (ICI)](https://www.the-ici-fund.org/recipients/details/chromoscope-interactive-visualization-for-clinical-interpretation-of-whole-cancer-genomes)). [Example: SVs in breast cancer case DO2706 with BRCA1 mutation and HRD signature](https://www.cbioportal.org/patient/openResource_CHROMOSCOPE?studyId=pancan_pcawg_2020&caseId=DO2706)
+    ![chromoscope image](https://github.com/user-attachments/assets/9ddc68ff-840b-4470-8f26-824f1faf959f)
+
+## October 8, 2024
+* **Enhancement**: Mutation Assessor V4 data is available in the portal.
+View the new V4 Mutation Assessor data in the [Mutation Table](https://bit.ly/48yOi7A) and the [Mutation Mapper Tool](https://www.cbioportal.org/mutation_mapper).
+    ![image](https://github.com/user-attachments/assets/ff53ee41-59d3-4c69-a494-3a7ca9a7c2d0)
+
+
+## September 27, 2024
+*   **Added data** consisting of 2,409 samples from 10 studies:
+	* [Pediatric European MAPPYACTS Trial (Gustave Roussy, Cancer Discov 2022)](https://www.cbioportal.org/study/summary?id=pancan_mappyacts_2022) *786 samples*
+    * [Hepatocellular Carcinoma (CLCA, Nature 2024)](https://www.cbioportal.org/study/summary?id=hcc_clca_2024) *494 samples*
+    * [Gastrointestinal Stromal Tumors (MSK, Clin Cancer Res 2023)](https://www.cbioportal.org/study/summary?id=gist_msk_2023) *469 samples*
+    * [Diffuse Large B-Cell Lymphoma (MSK, Haematologica 2024)](https://www.cbioportal.org/study/summary?id=mbn_msk_2024) *396 samples*
+    * [Pituitary Adenoma (MSK, Acta Neuropathologica 2024)](https://www.cbioportal.org/study/summary?id=ptad_msk_2024) *104 samples*
+    * [Triple-Negative Breast Cancer (FUSCC, Cell Research 2020)](https://www.cbioportal.org/study/summary?id=brca_fuscc_2020) *69 samples*
+    * [Endometrial and Ovarian Cancer (MSK, Nature Medicine 2024)](https://www.cbioportal.org/study/summary?id=ucec_msk_2024) *33 samples*
+    * [Cutaneous Squamous Cell Carcinoma (UOW, Front Oncol 2022)](https://www.cbioportal.org/study/summary?id=cscc_ranson_2022) *25 samples*
+    * [RAD51B Associated Mixed Cancers (MSK, NPJ Breast Cancer 2021)](https://www.cbioportal.org/study/summary?id=mixed_msk_tcga_2021) *19 samples*
+    * [Pleural Mesothelioma (MSK, Clin Cancer Res 2024)](https://www.cbioportal.org/study/summary?id=plmeso_msk_2024) *14 samples*
+
+
+## August 28, 2024
+
+*   **New feature** (_Windows users only_): The Group Comparison results can now be visualized in 3D with AVM, an interactive 3D visualization software tool with data shaping functions and integrated pathways. Read more on [AVM for cBioPortal](https://bit.ly/avm-cbioportal). 
+    * **Note for private instances**: To enable this feature in private cBioPortal instances, please see [this instruction](https://docs.cbioportal.org/deployment/customization/application.properties-reference#add-custom-buttons-to-data-tables).
+  ![image](https://github.com/user-attachments/assets/4150368b-c38c-41f8-a1da-af8c3d79ebf1)
+  ![image](https://github.com/user-attachments/assets/bba1221d-e07a-460a-ac6e-774d737cdc30)
+
+
+
+## July 29, 2024
+*   **Added data** consisting of 12,863 samples from 33 TCGA and 10 CPTAC studies from the [Genomic Data Commons (GDC)](https://gdc.cancer.gov) as part of the [Cancer Research Data Commons (NCI-CRDC)](https://datacommons.cancer.gov) initiative. More information can be found on our [FAQ](https://docs.cbioportal.org/user-guide/faq/#tcga).
+    * [Acute Myeloid Leukemia (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=aml_tcga_gdc) *200 samples*
+    * [Adrenocortical Carcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=acc_tcga_gdc) *92 samples*
+    * [Bladder Urothelial Carcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=blca_tcga_gdc) *413 samples*
+    * [Cervical Squamous Cell Carcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=cesc_tcga_gdc) *309 samples*
+    * [Cholangiocarcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=chol_tcga_gdc) *51 samples*
+    * [Chromophobe Renal Cell Carcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=chrcc_tcga_gdc) *66 samples*
+    * [Colon Adenocarcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=coad_tcga_gdc) *463 samples*
+    * [Cutaneous Melanoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=skcm_tcga_gdc) *473 samples*
+    * [Diffuse Glioma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=difg_tcga_gdc) *530 samples*
+    * [Diffuse Large B-Cell Lymphoma, NOS (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=dlbclnos_tcga_gdc) *48 samples*
+    * [Endometrial Carcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=ucec_tcga_gdc) *548 samples*
+    * [Esophageal Adenocarcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=esca_tcga_gdc) *186 samples*
+    * [Glioblastoma Multiforme (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=gbm_tcga_gdc) *610 samples*
+    * [Head and Neck Squamous Cell Carcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=hnsc_tcga_gdc) *530 samples*
+    * [Hepatocellular Carcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=hcc_tcga_gdc) *379 samples*
+    * [High-Grade Serous Ovarian Cancer (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=hgsoc_tcga_gdc) *602 samples*
+    * [Invasive Breast Carcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=brca_tcga_gdc) *1103 samples*
+    * [Lung Adenocarcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=luad_tcga_gdc) *571 samples*
+    * [Lung Squamous Cell Carcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=lusc_tcga_gdc) *503 samples*
+    * [Miscellaneous Neuroepithelial Tumor (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=mnet_tcga_gdc) *184 samples*
+    * [Non-Seminomatous Germ Cell Tumor (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=nsgct_tcga_gdc) *156 samples*
+    * [Pancreatic Adenocarcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=paad_tcga_gdc) *186 samples*
+    * [Papillary Renal Cell Carcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=prcc_tcga_gdc) *292 samples*
+    * [Papillary Thyroid Cancer (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=thpa_tcga_gdc) *515 samples*
+    * [Pleural Mesothelioma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=plmeso_tcga_gdc) *87 samples*
+    * [Prostate Adenocarcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=prad_tcga_gdc) *501 samples*
+    * [Rectal Adenocarcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=read_tcga_gdc) *171 samples*
+    * [Renal Clear Cell Carcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=ccrcc_tcga_gdc) *537 samples*
+    * [Soft Tissue Cancer (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=soft_tissue_tcga_gdc) *264 samples*
+    * [Stomach Adenocarcinoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=stad_tcga_gdc) *443 samples*
+    * [Thymoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=thym_tcga_gdc) *124 samples*
+    * [Uterine Carcinosarcoma/Uterine Malignant Mixed Mullerian Tumor (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=ucs_tcga_gdc) *57 samples*
+    * [Uveal Melanoma (TCGA, GDC)](https://www.cbioportal.org/study/summary?id=um_tcga_gdc) *80 samples*
+    * [Breast Cancer (CPTAC, GDC)](https://www.cbioportal.org/study/summary?id=breast_cptac_gdc) *154 samples*
+    * [CNS/Brain Cancer (CPTAC, GDC)](https://www.cbioportal.org/study/summary?id=brain_cptac_gdc) *74 samples*
+    * [Colon Adenocarcinoma (CPTAC, GDC)](https://www.cbioportal.org/study/summary?id=coad_cptac_gdc) *109 samples*
+    * [Head and Neck Carcinoma, Other (CPTAC, GDC)](https://www.cbioportal.org/study/summary?id=ohnca_cptac_gdc) *150 samples*
+    * [Lung Adenocarcinoma (CPTAC, GDC)](https://www.cbioportal.org/study/summary?id=luad_cptac_gdc) *180 samples*
+    * [Lung Squamous Cell Carcinoma (CPTAC, GDC)](https://www.cbioportal.org/study/summary?id=lusc_cptac_gdc) *90 samples*
+    * [Ovarian Cancer (CPTAC, GDC)](https://www.cbioportal.org/study/summary?id=ovary_cptac_gdc) *113 samples*
+    * [Pancreatic Cancer (CPTAC, GDC)](https://www.cbioportal.org/study/summary?id=pancreas_cptac_gdc) *139 samples*
+    * [Renal Cell Carcinoma (CPTAC, GDC)](https://www.cbioportal.org/study/summary?id=rcc_cptac_gdc) *288 samples*
+    * [Uterine Endometrioid Carcinoma (CPTAC, GDC)](https://www.cbioportal.org/study/summary?id=uec_cptac_gdc) *292 samples*
+
+## July 10, 2024
+*   **New Feature:** Explore mutational signatures on the patient page. The Pan-cancer analysis of whole genomes (ICGC/TCGA, Nature 2020) study has mutational signatures data available for over 2,500 cases. The new Mutational Signatures tab on the patient page graphically displays the types of mutations found in each case along with COSMIC reference signatures. [Example: POLE signature in case DO8898 in Pan-cancer analysis of whole genomes (ICGC/TCGA, Nature 2020)](https://www.cbioportal.org/patient/mutationalSignatures?studyId=pancan_pcawg_2020&caseId=DO8898)
+![image](https://github.com/user-attachments/assets/2f92c6d7-de26-42c4-ba04-24cb5df94160)
+
+## May 29, 2024
+*   **Added data** consisting of 9,632 samples from 10 studies:
+	* [Soft Tissue and Bone Sarcoma (MSK, Nat Commun 2022)](https://www.cbioportal.org/study/summary?id=sarcoma_msk_2022) *7494 samples*
+    * [Chronic Lymphocytic Leukemia (Broad, Nature Genetics 2022)](https://www.cbioportal.org/study/summary?id=cll_broad_2022) *1154 samples*
+    * [Mature B-Cell Neoplasms (Simon Fraser University, Blood 2023)](https://www.cbioportal.org/study/summary?id=mbn_sfu_2023) *297 samples*
+    * [Anaplastic Thyroid Cancers (GATCI, Cell Reports 2024)](https://www.cbioportal.org/study/summary?id=thyroid_gatci_2024) *190 samples*
+    * [Colorectal Cancer (CAS Shanghai, Cancer Cell 2020)](https://www.cbioportal.org/study/summary?id=coadread_cass_2020) *146 samples*
+    * [Prostate Cancer MDA PCa PDX (MD Anderson, Clin Cancer Res 2024)](https://www.cbioportal.org/study/summary?id=prad_msk_mdanderson_2023) *88 samples*
+    * [Ovarian Cancer - MSK SPECTRUM (MSK, Nature 2022)](https://www.cbioportal.org/study/summary?id=msk_spectrum_tme_2022) *82 samples*
+    * [IDH-mutated Diffuse Glioma (MSK, Clin Cancer Res 2024)](https://www.cbioportal.org/study/summary?id=difg_msk_2023) *73 samples*
+    * [Pre-cancer Colorectal Polyps (HTAN Vanderbilt, Cell 2021)](https://www.cbioportal.org/study/summary?id=crc_hta11_htan_2021) *61 samples*
+    * [Prostate Cancer (MSK, Science 2022)](https://www.cbioportal.org/study/summary?id=prad_organoids_msk_2022) *47 samples*
+
+*   **Data Improvement**
+
+    * Pan-can studies Ancestry addition: Genetic Ancestry data is added to all 32 TCGA Pan-Can studies,in generic assay format. Data source: [GDC](https://gdc.cancer.gov/about-data/publications/CCG-AIM-2020). [Example: Ancestry-associated somatic genetic alterations](https://www.cbioportal.org/comparison/alterations?comparisonId=664275e383e9543d61907074&patientEnrichments=true&selectedEnrichmentEventTypes=%5B%22missense%22%2C%22missense_mutation%22%2C%22missense_variant%22%2C%22indel%22%2C%22nonframeshift%22%2C%22inframe%22%2C%22inframe_del%22%2C%22inframe_deletion%22%2C%22in_frame_del%22%2C%22in_frame_deletion%22%2C%22nonframeshift_deletion%22%2C%22inframe_ins%22%2C%22inframe_insertion%22%2C%22in_frame_ins%22%2C%22in_frame_insertion%22%2C%22nonframeshift_insertion%22%2C%22truncating%22%2C%22feature_truncation%22%2C%22nonsense_mutation%22%2C%22nonsense%22%2C%22stopgain_snv%22%2C%22stop_gained%22%2C%22frameshift%22%2C%22frameshift_variant%22%2C%22frame_shift_del%22%2C%22frameshift_deletion%22%2C%22frame_shift_ins%22%2C%22frameshift_insertion%22%2C%22translation_start_site%22%2C%22initiator_codon_variant%22%2C%22start_codon_snp%22%2C%22start_codon_del%22%2C%22de_novo_start_outofframe%22%2C%22nonstop_mutation%22%2C%22stop_lost%22%2C%22splice_site%22%2C%22splice%22%2C%22splicing%22%2C%22splice_site_snp%22%2C%22splice_site_del%22%2C%22splice_site_indel%22%2C%22splice_region_variant%22%2C%22splice_region%22%2C%22silent%22%2C%22synonymous_variant%22%2C%22targeted_region%22%2C%22other%22%2C%22AMP%22%2C%22HOMDEL%22%2C%22structural_variant%22%5D)
+ <img width="1006" alt="Screen Shot 2024-05-20 at 10 52 11 AM" src="https://github.com/cBioPortal/datahub/assets/61431648/628b7eed-9d72-4605-b114-2e438dbd442a"> 
+
+## May 7, 2024
+* **New Feature**: Gene-specific charts in Study View now support mutation data. Two chart types are available: sample mutational status and mutation types.
+
+  ![image](https://github.com/cBioPortal/cbioportal/assets/10508276/d94c596a-1103-4aba-995a-ed1709236eee)
+  ![image](https://github.com/cBioPortal/cbioportal/assets/10508276/5fd2fdd0-07a5-434a-ad42-3f72b7c67bc5)
+  
+* **New Feature**: Categorical data loaded into the generic assay format is now available in group comparison. [Example: Arm-level CNA compared between astrocytoma vs oligodendroglioma in Brain Lower Grade Glioma (TCGA, PanCancer Atlas)](https://www.cbioportal.org/comparison/generic_assay_armlevel_cna?comparisonId=616ff06a2e3200072db98b99)
+
+
+  ![image](https://github.com/cBioPortal/cbioportal/assets/10508276/9f8c99a2-eef8-4b5a-ae33-4a2b295e0514)
+
+* **Enhancement**: OncoPrint now allows you to remove a gene track.
+
+  ![image](https://github.com/cBioPortal/cbioportal/assets/10508276/23cd422b-6a4e-4eff-9c04-ac88220591d2)
+
+## Apr 2, 2024
+* **Introducing the cBioPortal Newsletter!** Stay updated with the latest developments, insights, and community highlights of cBioPortal. Subscribe via [LinkedIn](https://www.linkedin.com/pulse/april-update-hello-cbioportal-community-cbioportal-22vle/) or [google groups](https://groups.google.com/g/cbioportal-news). We'll be sharing valuable updates every few months.
+
+## March 27, 2024
+* **New Feature**: The Plots tab is now available in the Study View. After exploring a cohort and applying any filters of interest in the Study View Summary page, you can now click over to the new Plots tab to explore the cohort by plotting any two attributes against each other. [Example: Mutation count vs subtype in Uterine Corpus Endometrial Carcinoma (TCGA, Nature 2013)](https://www.cbioportal.org/study/plots?id=ucec_tcga_pub&plots_horz_selection=%7B%22dataType%22%3A%22clinical_attribute%22%2C%22selectedDataSourceOption%22%3A%22SUBTYPE%22%7D&plots_vert_selection=%7B%22dataType%22%3A%22clinical_attribute%22%2C%22selectedDataSourceOption%22%3A%22MUTATION_COUNT%22%2C%22logScale%22%3A%22false%22%7D&plots_coloring_selection=%7B%7D)
+
+  ![image](https://github.com/cBioPortal/cbioportal/assets/10508276/cf74a4ff-57c6-4d71-86cb-4f7440fc3db6)
+
+* **Enhancement**: The custom selection feature in Study View, which filters to a user-defined list of samples/patients, no longer requires the inclusion of the study ID with each sample ID. If viewing multiple studies in study view and filtering to a sample ID which exists in more than one study, all samples will be displayed by default or the study ID can be included for additional specificity.
+
+  ![image](https://github.com/cBioPortal/cbioportal/assets/10508276/2143593d-5fd3-4b1d-b8a4-73a68e027e27)
+  
+## Mar 5, 2024
+*   **Local Installations Feature**: Make representation of custom driver annotation configurable:
+    ![image](https://github.com/cBioPortal/cbioportal/assets/1334004/f67fd82f-1789-4427-9ca1-f17fc70c1a09)
+
+## Feb 7, 2024
+* **New feature**: The _Datasets Page_ now lists what studies have samples profiled for Structural Variants:
+    
+    ![image](https://github.com/cBioPortal/cbioportal/assets/1334004/0e4e73e4-d9d8-417d-912c-710163480905)
+
+* **New Major Release**: **v6.0.0** includes a major repackaging of the backend software to improve the development experience. The backend has been upgraded to use Java Spring Boot v3.1.4. The CORE and MAF modules have been moved to new repositories. All other modules have been compacted into a single source repository. We have also updated the JVM to 21 and many libraries have been updated to address security and performance issues. See more information in the [v6.0.0 release notes](https://github.com/cBioPortal/cbioportal/releases/tag/v6.0.0).
+
+* **Local Installations Feature**: When mutational signature data is loaded, show COSMIC reference signatures on the _Patient View_:
+    
+    ![image](https://github.com/cBioPortal/cbioportal/assets/1334004/10f73baa-d28c-4bb7-ad62-4751bd7f61cd)
+
 ## Dec 29, 2023
 *   **Added data** consisting of 5,120 samples from 13 studies:
 	* [Endometrial Cancer (MSK, Cancer Discovery 2023)](https://www.cbioportal.org/study/summary?id=ucec_ancestry_cds_msk_2023) *1882 samples*
@@ -16,6 +236,38 @@
     
 *   **Gene Tables Update:** Updated tables of genes (main and alias), based on [Oct 1, 2023 HGNC release](http://ftp.ebi.ac.uk/pub/databases/genenames/hgnc/archive/monthly/tsv/). See seedDB release notes [here](https://github.com/cBioPortal/datahub/tree/master/seedDB#latest-seed-database-schema-2131) for details.
 
+## Dec 5, 2023
+* **New feature**: Filter by data types on the homepage:
+    
+    ![image](https://github.com/cBioPortal/cbioportal/assets/1334004/cf6d5486-bfd7-4f69-add0-442dbb4d354a)
+* **New feature**: Change colors of tracks in Oncoprint:
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/301b0efb-3063-44db-bc4c-86973e7c566a" width="700" />
+
+* **New feature**: Show alteration frequencies per group in OncoPrint. [Example: RTK-RAS alterations in Smokers vs Never Smokers Lung Cancer Cases in MSK-IMPACT Clinical Sequencing Cohort](https://bit.ly/3PwKsDJ)
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/f2a9576e-c06d-447a-8eac-f0292bd1f935" width="700" />
+
+## Oct 17, 2023
+* **New feature**: Survival charts with landmark events and hazard ratios. [Example: TP53 in Lung Cancer Cases in MSK-IMPACT Clinical Sequencing Cohort](https://bit.ly/48QktxS)
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/dc97c3ae-ebd7-4cd3-bb76-165517c9d2ba" width="700" />
+
+## Oct 3, 2023
+* **New feature**: New Structural Variants Tab on _Results View_. [Example: TMPRSS2 Structural Variants in MSK-IMPACT Clinical Sequencing Cohort](https://bit.ly/49FDhRk)
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/141e2817-3300-4af2-a845-005403d75e74" width="700" />
+
+## Sep 5, 2023
+* **New feature**:  Add gene-specific CNA charts to show all levels of copy number alterations (including gain and hetloss) on _Study View_:
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/873401ad-cbcf-4b07-9b80-8487af5abb18" width="700" />
+
+## Aug 30, 2023
+* **Enhancement**: Exclude a patient from your selection directly from the _Patient View_:
+    
+    ![image](https://github.com/cBioPortal/cbioportal/assets/1334004/501fe998-8408-48e3-a183-e27ab3ff3f28)
+
 ## Aug 21, 2023
 *   **Added data** consisting of 4,488 samples from 7 studies:
 	* [Lung Adenocarcinoma Met Organotropism (MSK, Cancer Cell 2023)](https://www.cbioportal.org/study/summary?id=luad_mskcc_2023_met_organotropism) *2653 samples*
@@ -25,6 +277,7 @@
     * [Colorectal Adenocarcinoma (MSK, Nat Commun 2022)](https://www.cbioportal.org/study/summary?id=bowel_colitis_msk_2022) *180 samples*
     * [Bladder Cancer (Columbia University/MSK, Cell 2018)](https://www.cbioportal.org/study/summary?id=bladder_columbia_msk_2018) *130 samples*
     * [Myoepithelial Carcinomas of Soft Tissue (WCM, CSH Molecular Case Studies 2022)](https://www.cbioportal.org/study/summary?id=stmyec_wcm_2022) *12 samples*
+
 
 *   **Gene Tables Update:** Updated tables of genes (main and alias), based on [Apr 1, 2023 HGNC release](http://ftp.ebi.ac.uk/pub/databases/genenames/hgnc/archive/monthly/tsv/). See seedDB release notes [here](https://github.com/cBioPortal/datahub/tree/master/seedDB#latest-seed-database) for details.
 
@@ -39,12 +292,23 @@
 
     Several users pointed out that using a one-sided test was incorrect for these comparisons. Please see discussions [here](https://github.com/cBioPortal/cbioportal/issues/9943) for more information.
 
+## Jul 18, 2023
+* **New Feature**: Add mutations table and two-sided exact p-value to comparison. [Example: AR mutations in Primary vs Metastatic Prostate Cancer samples in MSK-IMPACT Clinical Sequencing Cohort](https://www.cbioportal.org/comparison/mutations?sessionId=5cf89323e4b0ab413787436c&groupOrder=%5B%22Primary%22%2C%22Metastasis%22%5D&selectedGene=AR)
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/da0cd1ef-b9b4-49f0-a9d3-42cff0204dc2" width="700" />
+
+
 ## May 2, 2023
 *   **New Feature**: The mutations tab now shows variant annotations from the [repository of Variant with Unexpected Effects (reVUE)](https://www.cancerrevue.org/).
+    
     <img src="https://user-images.githubusercontent.com/16869603/234271379-6a0876ea-8477-426e-a0e4-5e0b0b66aef9.gif" width="700" />
+
+## Apr 25, 2023
+*   **Local Installations Feature**: When custom driver annotations for structural variants are loaded, one can now filter by them in both the Oncoprint and the _Study View_. 
 
 ## Apr 11, 2023
 *   **New Feature**: Disable autocommit and manually commit filters in study view. Manually commit filters can improve cBioPortal performance when query large dataset.
+
     <img src="https://user-images.githubusercontent.com/3323006/221857599-1eb6e9a5-55c7-4fb5-bc14-283699be0990.png" width="700" />
     <img src="https://user-images.githubusercontent.com/3323006/221858244-bf359850-79b5-4f9c-8008-6b5271721854.png" width="700" />
 
@@ -61,21 +325,23 @@
 
 ## Apr 4, 2023
 *   **New Feature**: Allow numeric data type for custom data charts.
+    
     <img src="https://user-images.githubusercontent.com/33220871/222459360-9c251f7f-1005-442f-811d-dd1ee1103161.png" width="700" />
     <img src="https://user-images.githubusercontent.com/33220871/222460439-ac7007c8-059a-4ecc-816c-90752adff444.png" width="700" />
 
     This also allows to have numerical custom data after we query based on genes (custom data 2 in the image):
+    
     <img src="https://user-images.githubusercontent.com/33220871/223729410-03a094f4-7671-453f-b8b8-f7bc10b61c7c.png" width="700" />
     <img src="https://user-images.githubusercontent.com/33220871/223729522-fd9e19e2-6218-40d4-b9fb-f253c4faa858.png" width="700" />
 
 ## Jan 10, 2023
-*   **New Feature**: New Pathways tab on the Group Comparison view. 
-    [Example: Primary vs Metastasis samples in MSK-IMPACT Clinical Sequencing Cohort](https://www.cbioportal.org/comparison/pathways?comparisonId=61791fa92e3200072db9b64e&groupOrder=%5B%22Primary%22%2C%22Metastasis%22%5D)
+*   **New Feature**: New Pathways tab on the Group Comparison view. [Example: Primary vs Metastasis samples in MSK-IMPACT Clinical Sequencing Cohort](https://www.cbioportal.org/comparison/pathways?comparisonId=61791fa92e3200072db9b64e&groupOrder=%5B%22Primary%22%2C%22Metastasis%22%5D)
+    
     <img src="https://user-images.githubusercontent.com/15748980/235750129-661682f7-6593-4b7e-8873-ebba70eeae32.png" width="700" />
 
 ## Dec 13, 2022
-*   **New Feature**: New Mutations tab on the Group Comparison view.
-    [Example: Primary vs Metastasis samples in MSK-IMPACT Clinical Sequencing Cohort](https://www.cbioportal.org/comparison/mutations?comparisonId=61791fa92e3200072db9b64e&groupOrder=%5B%22Primary%22%2C%22Metastasis%22%5D)
+*   **New Feature**: New Mutations tab on the Group Comparison view. [Example: Primary vs Metastasis samples in MSK-IMPACT Clinical Sequencing Cohort](https://www.cbioportal.org/comparison/mutations?comparisonId=61791fa92e3200072db9b64e&groupOrder=%5B%22Primary%22%2C%22Metastasis%22%5D)
+    
     <img src="https://user-images.githubusercontent.com/15748980/235748831-78652ccd-b3ab-496f-9626-74ceb8c7230d.png" width="700" />
 
 ## Oct 12, 2022
@@ -92,7 +358,8 @@
 	* [Urothelial Carcinoma (BCAN/HCRN 2022)](http://www.cbioportal.org/study/summary?id=blca_bcan_hcrn_2022) *203 samples*
 
 ## Sep 6, 2022
-*   **Enhancement**: Oncoprint can now save clinical tracks after login
+*   **Enhancement**: Oncoprint can now save clinical tracks after login:
+    
     <img src="https://user-images.githubusercontent.com/3323006/188828765-ded10947-7343-49dd-b605-50b58b67a388.png" width="700" />
 
 ## Aug 11, 2022
@@ -108,14 +375,29 @@
     * [Pan-cancer Analysis of Advanced and Metastatic Tumors (BCGSC, Nature Cancer 2020)](https://www.cbioportal.org/study/summary?id=pog570_bcgsc_2020) *570 samples*
     * [Prostate Adenocarcinoma (MSK, Clin Cancer Res. 2022)](https://www.cbioportal.org/study/summary?id=prad_pik3r1_msk_2021) *1,417 samples*
 
+## Jun 7, 2022
+* **New Feature**: Add heatmap to plot options on _Comparison Page_. [Example: Primary vs Metastatic Prostate Cancer in MSK-IMPACT (2017)](https://www.cbioportal.org/comparison/clinical?sessionId=5cf89323e4b0ab413787436c)
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/1a048863-7db6-43c6-8250-c31039a2d67f" width="700" />
+
 ## May 31, 2022
 * **New Feature**: Added Quartiles, Median split and Generate bins options for bar charts on the study view page, where Generate bins allows user to define bin size and min value
-    <img src="https://user-images.githubusercontent.com/53996876/151772297-f0aa55ef-5bb4-4e26-8f9b-b0a2369fff71.png" width="700" />
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/290e6d45-1c10-4a51-a823-24db27063486" width="700" />
+
 
 ## May 12, 2022
 * **New Feature**: Show cohort alteration frequencies in pathways from [NDEx](https://www.ndexbio.org/iquery/) on the _Results View_. [Example: Glioblastoma signaling pathways in MSK-IMPACT (2017) cohort](https://bit.ly/3sE4UqD)
 
     <img src="https://user-images.githubusercontent.com/1334004/168684594-fafd1fd6-b2a9-45d7-ad3a-d5611f3f469c.png" width="700" />
+
+## May 24, 2022
+* **New Feature**: Add Help buttons on various pages and tabs, including the homepage
+
+## May 10, 2022
+* **New Feature**: Use IGV for the genomic overview on the _Patient View_. [Example: Endometrial cancer patient in TCGA](https://www.cbioportal.org/patient?studyId=ucec_tcga_pub&caseId=TCGA-BK-A0CC)
+
+   <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/6fa6ab4b-4c09-4bd5-a7c2-3be2f418d83a" width="700" /> 
 
 ## May 5, 2022
 * **New Feature**: View mutations and copy number changes in the [Integrative Genomics Viewer (IGV)](https://igv.org/) on the _Patient View_. [Example: Endometrial cancer patient in TCGA](https://www.cbioportal.org/patient?studyId=ucec_tcga_pub&caseId=TCGA-BK-A0CC)
@@ -134,7 +416,7 @@
 
 ## Apr 20, 2022
 *   **Added data** consisting of 2,557 samples from 5 studies:
-    * [Breast Cancer (HTAN, 2022)](https://www.cbioportal.org/study/summary?id=brca_hta9_htan_2022) *5 samples*
+    * [Breast Cancer (HTAN OHSU, 2022)](https://www.cbioportal.org/study/summary?id=brca_hta9_htan_2022) *5 samples*
     * [Colorectal Cancer (MSK, 2022)](https://www.cbioportal.org/study/summary?id=crc_dd_2022) *47 samples*
     * [Pediatric Pancan Tumors (MSK, 2022)](https://www.cbioportal.org/study/summary?id=mixed_kunga_msk_2022) *135 samples*
     * [Sarcoma (MSK, 2022)](https://www.cbioportal.org/study/summary?id=sarcoma_mskcc_2022) *2,138 samples*
@@ -146,6 +428,32 @@
     * Pan-can studies methylation addition: methylation profile (27k and 450k merged) are added to all 32 TCGA Pan-Can studies, in generic assay format. Data source: [GDC](https://gdc.cancer.gov/node/977). Example: search by gene or probe from dropdown, to add a chart in study view, a track in Oncoprint (single study query only), or plots in plots tab. <img width="860" alt="Screen Shot 2022-03-22 at 9 52 20 PM" src="https://user-images.githubusercontent.com/5973438/159626976-72601dc9-e5be-4b50-bae9-dedb5be6e7fc.png"><img width="340" alt="Screen Shot 2022-03-22 at 9 52 27 PM" src="https://user-images.githubusercontent.com/5973438/159626985-2423c556-2180-4a00-b9b8-69b4d2e361ba.png"><img width="430" alt="Screen Shot 2022-03-22 at 9 53 38 PM" src="https://user-images.githubusercontent.com/5973438/159626987-e6b51bef-814e-4a76-826a-211fcdd5e9a1.png">
 
     * Single cell (type fraction and phases) data (in generic assay format) is added to [Glioblastoma (CPTAC, Cell 2021)](https://www.cbioportal.org/study/summary?id=gbm_cptac_2021)
+*   **New Feature** For the new HTAN OHSU study there is now also an integration with [Harvard LSP](https://labsyspharm.org/)'s [Minerva](https://www.cycif.org/software/minerva) for exploring multiplex imaging:
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/aa0f0c99-4b9c-481d-9f7f-891ea03fdd34" width="700" />
+
+
+## Mar 1, 2022
+* **New Documentation**:
+    * Add a [User Guide](https://docs.cbioportal.org/user-guide/)
+    * Add [Study View and Query How-to videos](https://docs.cbioportal.org/user-guide/overview/#how-to-videos)
+
+## Feb 8, 2022
+* **New Feature**: Create X vs Y violin plots in _Study View_ using any categorical and numerical clinical data:
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/94d7dd21-4415-405d-8e9b-46e1de3dc095" width="700" />
+
+## Jan 19, 2022
+* **New Feature**: Numerical filters on the _Study View_ are now editable:
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/00926fec-f32b-48c7-a85f-fced7c29070f" width="700" />
+* **New Feature**: In the annotation column choose between showing a single icon OncoKB icon or multiple (one for therapeutic, diagnostic and prognostic):
+    
+    <img src="https://github.com/cBioPortal/cbioportal/assets/1334004/87c5f7d6-10d7-4631-8b37-fa8cef4cabe2" width="700" />
+
+## Jan 10, 2022
+* **New Documentation for Local cBioPortal Installations**:
+    * Explain how to use [Genome Nexus to annotate MAF files](https://docs.cbioportal.org/file-formats/#create-the-cbioportal-mutation-data-file-with-genome-nexus-with-a-minimal-maf-file)
 
 ## Jan 4, 2022
 *   **Added data** consisting of 27,447 samples from 10 studies:
@@ -159,6 +467,7 @@
     * [Metastatic Prostate Cancer (Provisional, June 2021)](https://www.cbioportal.org/study/summary?id=mpcproject_broad_2021) *123 samples*
     * [MSK MetTropism (MSK, Cell 2021)](https://www.cbioportal.org/study/summary?id=msk_met_2021) *25,775 samples*
     * [Cancer Therapy and Clonal Hematopoiesis (MSK, 2021)](https://www.cbioportal.org/study/summary?id=msk_ch_ped_2021) *657 samples*
+
 
 *   **Added TMB (nonsynonymous) scores** for all studies. [Example: new TMB field for study gbm_cptac_2021](https://www.cbioportal.org/study/clinicalData?id=gbm_cptac_2021)   
     (Details for the calculation can be found [HERE](https://github.com/cBioPortal/datahub-study-curation-tools/blob/master/tmb/calculate_tmb/Readme.md))   
@@ -300,6 +609,7 @@
     <img src="https://user-images.githubusercontent.com/1334004/104649378-9f1ac100-5682-11eb-91eb-4e0f024a4ded.png" width="700">
 
 *   **New Feature**: Display and compare generic assays, such as microbiome and treatment response, on the study view [Example: Prasinovirus microbiome signatures in TCGA](https://www.cbioportal.org/study?id=6000b6aae4b015b63e9d4d44)
+    
     <img src="https://user-images.githubusercontent.com/1334004/104651211-54e70f00-5685-11eb-94f1-f20930793c28.png" width="700">
 
 *   **New Feature**: The Plots tab on _Results View_ now allows you to group alterations by Driver and VUS [Example: POLE driver mutations vs VUSs against mutation counts in TCGA Colorectal Adenocarcinoma](https://bit.ly/3ssY9Gu)

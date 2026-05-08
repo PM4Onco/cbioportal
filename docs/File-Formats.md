@@ -269,7 +269,7 @@ These columns can be in either the patient or sample file.
 ### Custom columns in clinical data
 cBioPortal supports custom columns with clinical data in either the patient or sample file. They should follow the previously described 5-row header format. Be sure to provide the correct `Datatype`, for optimal search, sorting, filtering (in [clinical data tab](https://www.cbioportal.org/study?id=brca_tcga#clinical)) and visualization.
 
-The Clinical Data Dictionary from MSKCC is used to normalize clinical data, and should be followed to make the clinical data comparable between studies. This dictionary provides a definition whether an attribute should be defined on the patient or sample level, as well as provides a name, description and datatype. The data curator can choose to ignore these proposed definitions, but not following this dictionary might make comparing data between studies more difficult. It should however not break any cBioPortal functionality. See GET /api/ at [https://oncotree.mskcc.org/cdd/swagger-ui.html#/](https://oncotree.mskcc.org/cdd/swagger-ui.html#/) for the data dictionary of all known clinical attributes.
+The Clinical Data Dictionary from MSKCC is used to normalize clinical data, and should be followed to make the clinical data comparable between studies. This dictionary provides a definition whether an attribute should be defined on the patient or sample level, as well as provides a name, description and datatype. The data curator can choose to ignore these proposed definitions, but not following this dictionary might make comparing data between studies more difficult. It should however not break any cBioPortal functionality. See GET /api/ at [https://cdd.cbioportal.mskcc.org/swagger-ui.html](https://cdd.cbioportal.mskcc.org/swagger-ui.html#!/clinical-data-dictionary-controller/getClinicalAttributeMetadataBySearchTermsUsingPOST) for the data dictionary of all known clinical attributes.
 
 ### Banned column names
 `MUTATION_COUNT` and `FRACTION_GENOME_ALTERED` are auto populated clinical attributes, and should therefore not be present in clinical data files.
@@ -796,7 +796,7 @@ Allele specific copy number (ASCN) annotation is also supported and may be added
 49. **ASCN.ASCN_INTEGER_COPY_NUMER (Optional)**: Absolute integer copy-number estimate.
 
 ### Example cBioPortal mutation data file
-An example cBioPortal mutation data file can be found in the cBioPortal test study [study_es_0](https://github.com/cBioPortal/cbioportal/blob/master/core/src/test/scripts/test_data/study_es_0/data_mutations_extended.maf).
+An example cBioPortal mutation data file can be found in the cBioPortal test study [study_es_0](https://github.com/cBioPortal/cbioportal/blob/master/test/test_data/study_es_0/data_mutations_extended.maf).
 
 ### Filtered mutations
 A special case for **Entrez_Gene_Id=0** and **Hugo_Symbol=Unknown**: when this combination is given, the record is parsed in the same way as **Variant_Classification=IGR** and therefore filtered out.
@@ -1197,7 +1197,16 @@ Suggested columns
  * **SOURCE**: Where the status was monitored.
  * Based on different cancer types you can add additional data here.
 
-_**EVENT_TYPE: SPECIMEN**_
+_**EVENT_TYPE: SPECIMEN | SAMPLE ACQUISITION | SEQUENCING**_
+
+Events of type SPECIMEN, SAMPLE ACQUISITION or SEQUENCING are rendered as numbered discs and their 
+    tracks placed at the top of the timeline.  They are color coded according to the sample's clinical data:
+the sample must have a clinical attribute of type "SAMPLE_TYPE" and value as follows:
+* If set to `recurrence`, `recurred`, `progression` or `progressed`: orange
+* If set to `metastatic` or `metastasis`: red
+* If set to `primary` or otherwise: black
+
+![recurrently-altered-genes-table](images/timeline_samples.png)
 
 Suggested columns
 

@@ -38,22 +38,21 @@ RUN apt-get update; apt-get install -y --no-install-recommends \
         python3-dev \
         python3-pip \
         unzip \
-    && rm -rf /var/lib/apt/lists/* \
-    && pip3 install wheel
+    && rm -rf /var/lib/apt/lists/*
 
 # copy over core files and data-related scripts
 RUN mkdir -p /cbioportal
 
 #Download core files
-RUN wget https://github.com/cBioPortal/cbioportal-core/releases/download/1.0.4/core-1.0.4.jar -P core/ ; cd core ; jar -xf core-1.0.4.jar scripts/ ; chmod -R a+x scripts/ ; cd ..;
+RUN wget https://github.com/cBioPortal/cbioportal-core/releases/download/v1.0.16/core-1.0.16.jar -P core/ ; cd core ; jar -xf core-1.0.16.jar scripts/ requirements.txt ; chmod -R a+x scripts/ ; cd ..;
 
 
 COPY --from=build /cbioportal/src/main/resources/db-scripts /cbioportal/db-scripts
-COPY --from=build /cbioportal/requirements.txt /cbioportal/requirements.txt
+COPY --from=build /cbioportal/test/test_data/study_es_0 /cbioportal/test/study_es_0
 
 # install build and runtime dependencies
 # ignore update failure980[1298[01 w2308s
-RUN  pip3 install -r /cbioportal/requirements.txt
+RUN  pip3 install --break-system-packages -r /core/requirements.txt
 
 # add importer scripts to PATH for easy running in containers
 RUN find /core/scripts/ -type f -executable \! -name '*.pl' -print0 | xargs -0 -- ln -st /usr/local/bin
@@ -75,4 +74,4 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/classes             $PORTAL_WEB_HOME/
 # add entrypoint
 COPY --from=build /cbioportal/docker/web-and-data/docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["sh", "-c", "java $(echo $JAVA_OPTS) -cp /cbioportal-webapp:/cbioportal-webapp/lib/* org.cbioportal.PortalApplication $(echo $WEBAPP_OPTS)"]
+CMD ["sh", "-c", "java $(echo $JAVA_OPTS) -cp /cbioportal-webapp:/cbioportal-webapp/lib/* org.cbioportal.application.PortalApplication $(echo $WEBAPP_OPTS)"]

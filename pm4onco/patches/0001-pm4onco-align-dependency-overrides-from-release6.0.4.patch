@@ -1,0 +1,39 @@
+From a1e167a7e7f11689f5f345022c3a5b7305fd82a6 Mon Sep 17 00:00:00 2001
+From: "AnhVu.Tran" <anhvu.tran@uksh.de>
+Date: Thu, 12 Mar 2026 15:36:15 +0100
+Subject: [PATCH 1/3] pm4onco: align dependency overrides from release6.0.4
+
+---
+ pom.xml | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index 936665eeb4..3c1e6ac370 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -334,10 +334,6 @@
+       <artifactId>h2</artifactId>
+       <scope>test</scope>
+     </dependency>
+-    <dependency>
+-      <groupId>org.springframework.boot</groupId>
+-      <artifactId>spring-boot-starter-data-mongodb</artifactId>
+-    </dependency>
+     <dependency>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-starter-oauth2-client</artifactId>
+@@ -369,6 +365,11 @@
+       <artifactId>sentry-spring-boot-starter-jakarta</artifactId>
+       <version>${sentry.version}</version>
+     </dependency>
++    <dependency>
++      <groupId>javax.xml.bind</groupId>
++      <artifactId>jaxb-api</artifactId>
++      <version>2.3.1</version>
++    </dependency>
+     <dependency>
+       <groupId>org.apache.httpcomponents.client5</groupId>
+       <artifactId>httpclient5</artifactId>
+-- 
+2.52.0
+

@@ -28,7 +28,7 @@ From the [GitHub Help Page of Using Pull Requests](https://help.github.com/artic
 
 ### Programming
  * Make sure you have a [GitHub account](https://github.com/signup/free).
- * Familiarize yourself with the [project documentation](https://docs.cbioportal.org), including the [Feature Development Guide](https://docs.cbioportal.org/4.-development/feature-development-guide), the [Architecture docs](https://docs.cbioportal.org/2.1-deployment/architecture-overview), the [backend code organization](docs/Backend-Code-Organization.md) and [backend development guidelines](docs/Backend-Development-Guidelines.md).
+ * Familiarize yourself with the [project documentation](https://docs.cbioportal.org), including the [Feature Development Guide](https://docs.cbioportal.org/development/feature-development-guide/), the [Architecture docs](https://docs.cbioportal.org/2.1-deployment/architecture-overview), the [backend code organization](https://docs.cbioportal.org/development/backend-code-organization/) and [backend development guidelines](https://docs.cbioportal.org/development/backend-development-guidelines/).
  * Find a [good first issue](https://github.com/cBioPortal/cbioportal/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22) to start with
  * Check if the issue will require frontend or backend changes. If it is for the frontend look at how to set up the [frontend repo](https://github.com/cbioPortal/cbioportal-frontend/) instead
  * Fork the cbioportal or cbioportal-frontend project on GitHub depending on what your working on.  For general instructions on forking a GitHub project, see [Forking a Repo](https://help.github.com/articles/fork-a-repo/) and [Syncing a fork](https://help.github.com/articles/syncing-a-fork/).
@@ -64,7 +64,12 @@ A few tips:
 When you are ready to submit your pull-request:
 
 * Push your branch to your GitHub project.
-* Open the pull request to the branch you've based your work on
+* Always create a [draft pull request](https://github.blog/news-insights/product-news/introducing-draft-pull-requests/) first to indicate work in progress and gather early feedback.
+* Ensure all CI checks and tests pass before marking the pull request as ready.
+* Review your own code for formatting, correctness, and best practices.
+* Provide a clear PR description to help reviewers understand the changes.
+* Make sure your PR is based on the correct branch.
+* Once you think the pull request is ready, you can [Mark a pull request as ready for review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review).
 
 For more details on submitting a pull-request, please see:  [GitHub Guide to Collaborating with issues and pull requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests).
 

@@ -1,6 +1,6 @@
 # More application.properties Settings
 
-This page describes the main properties within application.properties.
+This page describes the main properties within application.properties. Note that auth-related properties can be found in [security.properties-Reference](./security.properties-Reference.md).
 
 ## Database Settings
 
@@ -49,6 +49,14 @@ skin.show_about_tab=
 ```
 
 **Note:** `skin.show_tools_tab` refers to the `Visualize Your Data` tab, while `skin.show_data_tab` refers to the `Data Sets` tab.
+
+### Show donate button
+
+We kindly ask for your support by enabling the “Donate” button on your portals to help fund our mission. The button will direct users to https://docs.cbioportal.org/donate/, where they can learn more about how the funding is utilized. You can activate it through:
+
+```
+skin.show_donate_button=true
+```
 
 ### Cross Cancer Study Query Default
 
@@ -154,6 +162,18 @@ Prevent users from saving data by removing all Download tabs and download and co
 skin.hide_download_controls=
 ```
 
+### Quick select buttons
+
+This feature allows you to generate a Quick Select button on the top of your query page. The button, when clicked on, will automatically select the studies mentioned after the '#`.
+
+```
+skin.quick_select_buttons=
+```
+
+The format for the string should be ``<Button name>|<Mouse-over text>#study1a,study1b,....`` where:
+- `<Button name>` will be the label on the button (for e.g. TCGA PanCancer Atlas Studies, Curated set of non-redundant studies)
+- `<Mouse-over text>` will be the text that is displayed when you hover over the button (for e.g. 218 studies that are manually curated including TCGA and non-TCGA studies with no overlapping samples)
+- `study1a,study1b,....` are the study IDs of the loaded studies that should be selected when the button is clicked. (for e.g. acbc_mskcc_2015,acc_tcga_pan_can_atlas_2018)
 
 
 ### Control default setting for filtering of genes in mutation and CNA tables of patient view
@@ -226,6 +246,15 @@ skin.patient_view.copy_number_table.columns.show_on_init=
 skin.patient_view.structural_variant_table.columns.show_on_init=
 ```
 
+### Default sort columns on Mutation, Copy-Number and Structural Variant Tables
+
+Define the column that are going to sort be default in the Mutation, Copy-Number and Structural Variant Tables on the Patient View and the Mutation Table in the Results View.
+Column name should be exactly the same as shown in tables.
+```
+skin.results_view.tables.default_sort_column=
+skin.patient_view.tables.default_sort_column=
+```
+
 ### Define custom sample type colors
 Define the colors of custom sample types in the patient view using a json object with for each sample type a color:
 ```
@@ -237,14 +266,6 @@ Example of json file contents:
     "Primary": "green",
     "Biopsy 3": "#00c040ff"
 }
-```
-
-### Choose the display name for authenticated users
-
-By default the display name for authenticated users is email, but it can be changed for the user name:
-
-```
-skin.user_display_name=username
 ```
 
 ### Hide p- and q-values in survival types table
@@ -344,7 +365,7 @@ googleplus.consumer.secret=2jCfg4SPWdGfXF44WC588dK
 
 (note: these are just examples, you need to get your own) You will also need to go to "Google+ API" and click Enable button. In case of problems make sure to enable DEBUG logging for org.springframework.social and org.springframework.security.web.authentication.
 
-To activate password authentication follow the [Deployment with authentication steps](/deployment/deploy-without-docker/Deploying.md#required-login) and set `authenticate=googleplus`.
+To activate password authentication follow the [Deployment with authentication steps](../deploy-without-docker/Deploying.md#required-login) and set `authenticate=googleplus`.
 
 In addition, set this property in `application.properties`:
 
@@ -352,7 +373,7 @@ In addition, set this property in `application.properties`:
 app.name=cbioportal
 ```
 
-app.name should be set to the name of the portal instance referenced in the "AUTHORITY" column of the "AUTHORITIES" table. See the [User Authorization](/deployment/authorization-and-authentication/User-Authorization.md) for more information.
+app.name should be set to the name of the portal instance referenced in the "AUTHORITY" column of the "AUTHORITIES" table. See the [User Authorization](../authorization-and-authentication/User-Authorization.md) for more information.
 
 ## OncoKB integration
 
@@ -362,22 +383,10 @@ OncoKB integration can be turned on or off with the following property (default:
 show.oncokb=true|false
 ```
 
-A private token is required to access the OncoKB Data (for details see the section [OncoKB Data Access](/deployment/integration-with-other-webservices/OncoKB-Data-Access.md)):
+A private token is required to access the OncoKB Data (for details see the section [OncoKB Data Access](../integration-with-other-webservices/OncoKB-Data-Access.md)):
 
 ```
 oncokb.token=
-```
-
-"cBioPortal>=" driver annotation sources in the settings menu of Results View can be hidden by turning off the following property (default: true):
-
-```
-show.cbioportal=true|false
-```
-
-"COSMIC>=" driver annotation sources in the settings menu of Results View can be hidden by turning off the following property (default: true):
-
-```
-show.cosmic=true|false
 ```
 
 ## CIViC integration
@@ -459,11 +468,13 @@ These data formats are described in the [cBioPortal MAF specifications](/File-Fo
 
 **Enabling custom annotations in the OncoPrint**
 
-To enable functionality for one or both types of custom annotations, enter values for the following properties. These labels will appear in the OncoPrint's "Mutation color" menu.
+To enable functionality for one or both types of custom annotations, enter values for the following properties. These values will appear in the OncoPrint's "Mutation color" menu, Patient View's (mutation, CNA, SV) tables, Results View's mutation table, and Group Comparison View's mutation table.
 
 ```
-oncoprint.custom_driver_annotation.binary.menu_label=Custom driver annotation
-oncoprint.custom_driver_annotation.tiers.menu_label=Custom driver tiers
+oncoprint.custom_driver_annotation.binary.menu_label=Custom Driver
+oncoprint.custom_driver_annotation.binary.menu_description=Custom driver tiers
+oncoprint.custom_driver_annotation.tiers.menu_label=Custom Driver Tiers
+oncoprint.custom_driver_annotation.tiers.menu_description=Custom driver tiers
 ```
 
 **Automatic selection of OncoKB, hotspots and custom annotations**
@@ -551,7 +562,7 @@ cBioPortal is supported on the backend with Ehcache or Redis. These caches are c
 
 The cache type is set using `persistence.cache_type`. Valid values are `no-cache`, `redis` (redis), `ehache-heap` (ehcache heap-only), `ehache-disk` (ehcache disk-only), and `ehache-hybrid` (ehcache disk + heap). By default, `persistence.cache_type` is set to `no-cache` which disables the cache. When the cache is disabled, no responses will be stored in the cache.
 
-:warning: the 'redis' caching option will likely cause a conflict when installing the portal in a Tomcat installation which uses redisson for session management. If you plan to deploy cbioportal to such a system, avoid the 'redis' caching option for `persistence.cache_type` and be sure to build cbioportal.war with the maven option `-Dexclude-redisson` (see [Building with Maven](/deployment/deploy-without-docker/Build-from-Source.md#building-with-maven)).
+:warning: the 'redis' caching option will likely cause a conflict when installing the portal in a Tomcat installation which uses redisson for session management. If you plan to deploy cbioportal to such a system, avoid the 'redis' caching option for `persistence.cache_type` and be sure to build cbioportal.war with the maven option `-Dexclude-redisson` (see [Building with Maven](../deploy-without-docker/Build-from-Source.md#building-with-maven)).
 
 ```
 persistence.cache_type=[no-cache or ehache-heap or ehcache-disk or ehcache-hybrid or redis]
@@ -585,11 +596,13 @@ For general statistics about the cache such as memory usage (not currently imple
 
 **WARNING**: It must be noted that since cache statistics endpoint returns data on cache keys, the endpoint may expose otherwise hidden database query parameters such as sample identifiers, study names, etc. Generally, it is recommended that the endpoint only be turned on during cache-related development for testing. Deployers of a protected portal where users only have authorities to a subset of studies should carefully consider whether or not to turn on the cache statistics endpoint, as it does not filter the results.
 
-For more information on how caching is implemented in cBioPortal refer to the [Caching](/deployment/customization/Caching.md) documentation.
+For more information on how caching is implemented in cBioPortal refer to the [Caching](Caching.md) documentation.
 
 ### Redis
 
 To cache with Redis set `persistence.cache_type` to `redis`.
+
+**Note**: Redis is always optional. If Redis is unavailable, the application will start without caching and automatically fallback to database queries.
 
 To setup the Redis cache servers the following properties are required:
 
@@ -606,7 +619,8 @@ If you are running one redis instance for multiple instances of cBioPortal, one 
 There are also some optional parameters:
 
 `redis.clear_on_startup`: If `true`, the caches will clear on startup. This is important to do to avoid reading old study data from the cache. You may want to turn it off and clear redis yourself if you are running in a clustered environments, as you'll have frequent restarts that do not require you to clear the redis cache.\
-`redis.ttl_mins`: The time to live of items in the general cache, in minutes. The default value is 10000, or just under 7 days.
+`redis.ttl_mins`: The time to live of items in the general cache, in minutes. The default value is 10000, or just under 7 days.\
+`redis.health_check_interval_ms`: The interval in milliseconds to wait before retrying Redis operations after a failure. This prevents repeated connection attempts when Redis is down, improving performance. Default is 30000 (30 seconds).
 
 For more information on Redis, refer to the official documentation [here](https://redis.io/documentation)
 
@@ -779,3 +793,19 @@ By default, the studies loaded into a local cBioPortal instance are organized ba
 priority_studies=
 ```
 The value of this variable will create a custom category with studies on the top of the study selector view. The format for the string should be category1#study1a,study1b,study1c;category2#study2 (e.g., PanCancer Studies#msk_impact_2017), where the ``category`` can be any string and the ``study`` should be the study ID of the required uploaded study. 
+
+## Study Tag functionality
+Study Tags allow portal maintainers to define miscellaneous descriptive meta data to studies, which will be shown to users in tooltips and are also searchable. This feature
+is on by default but can be disabled using the following property.
+```
+//boolean
+enable_study_tags=true|false
+```
+
+# Add Custom Buttons to data tables
+Custom Buttons can be defined which will conditionally appear in all group comparison data tables (with CopyDownloadControls) to launch a custom URL. This can be used, for example, to launch a software application (that is installed on the user's system) with the data. This configuration can also customize new elements on the Visualize page. It points to a JSON file. (See [download_custom_buttons reference](download_custom_buttons-Reference.md)). 
+
+
+```
+download_custom_buttons_json=classpath:custom_buttons/download_custom_button_avm.json
+```

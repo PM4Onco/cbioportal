@@ -3,12 +3,16 @@ on:
   push:
     branches:
       - master
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened]
 jobs:
   build:
     name: sonarcloud
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request_target' }}
+    env:
+      TEST_DB_CLICKHOUSE_PASSWORD: ${{ secrets.TEST_DB_CLICKHOUSE_PASSWORD }}
+      TEST_DB_MYSQL_PASSWORD: ${{ secrets.TEST_DB_MYSQL_PASSWORD }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -18,13 +22,13 @@ jobs:
         with:
           java-version: 21
       - name: Cache SonarCloud packages
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Cache Maven packages
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
@@ -34,11 +38,30 @@ jobs:
           cp src/main/resources/application.properties.EXAMPLE src/main/resources/application.properties
       - name: Build and analyze
         env:
-          SONAR_TOKEN:  ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN:  de1b5cc660cd210dde840f492c371da6cc801763
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn clean install verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+      - name: 'Add host.testcontainers.internal to /etc/hosts'
+        run: |
+            echo "127.0.0.1 host.testcontainers.internal" | sudo tee -a /etc/hosts
+      - name: 'Run integration tests'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD != '' }}
+        run: |
+          mvn verify -Pintegration-test
+      - name: 'Skip integration tests (missing clickhouse secret)'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD == '' }}
+        run: |
+          echo "Skipping integration tests: TEST_DB_CLICKHOUSE_PASSWORD is not configured."
+      - name: 'Run e2e tests'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD != '' }}
+        run: |
+          mvn verify -Pe2e-test
+      - name: 'Skip e2e tests (missing clickhouse secret)'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD == '' }}
+        run: |
+          echo "Skipping e2e tests: TEST_DB_CLICKHOUSE_PASSWORD is not configured."
       - name: Code Coverage
         env:
-          SONAR_TOKEN:  ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN:  de1b5cc660cd210dde840f492c371da6cc801763
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn sonar:sonar -Pcoverage

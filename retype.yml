@@ -21,6 +21,9 @@ links:
   - text: Google Group
     link: https://groups.google.com/g/cbioportal
     icon: comment-discussion
+  - text: Donate
+    link: /donate
+    icon: heart-fill
 
 https://groups:
   google:
@@ -34,3 +37,7 @@ edit:
   repo: "https://github.com/cbioportal/cbioportal/"
   branch: master
   base: /docs/
+
+integrations:
+  googleAnalytics:
+    id: G-HEJSRG35RS

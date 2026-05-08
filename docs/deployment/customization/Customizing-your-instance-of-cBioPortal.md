@@ -7,7 +7,7 @@ customize the web page cosmetics, such as custom images,
 texts, which tabs are visible, etc.
 Nearly all the skins properties have defaults, which can be overwritten by
 changing the `application.properties` file located in `$PORTAL_HOME`--see
-[the deployment manual](/deployment/deploy-without-docker/Deploying.md). If your cBioPortal instance
+[the deployment manual](../deploy-without-docker/Deploying.md). If your cBioPortal instance
 does not yet contain a `application.properties` file, you can copy
 `src/main/resources/application.properties.EXAMPLE` and edit it.
 
@@ -255,7 +255,7 @@ Below you can find the complete list of all the available skin properties.
         </tr>
 		<tr>
             <td>skin.hide_download_controls</td>
-            <td>controls download options in UI. **true**: hides all download options. **false**:  shows all download options. **data**: disable data download but not figure download</td>
+            <td>controls download options in UI. **true**: hides all download options. **false**:  shows all download options. **data**: disable data download but not figure download. Broken in later versions, see <a href="https://github.com/cBioPortal/cbioportal/issues/11821" target="_blank">ticket</a></td>
             <td>false</td>
             <td>true / false / data</td>
         </tr>
@@ -278,19 +278,18 @@ If the download_group is present in user groups then download options are shown 
             <td>false</td>
             <td>true / false</td>
         </tr>
-      <tr>
+        <tr>
             <td>google_analytics_profile_id</td>
             <td>enables google analaytics tracking on your site</td>
             <td>disabled</td>
             <td>string</td>
         </tr>
-                
-           
-        
-
-        
-       
-        
+        <tr>
+            <td>google_tag_manager_id</td>
+            <td>enables google tag manager on your site</td>
+            <td>disabled</td>
+            <td>string</td>
+        </tr>
    </tbody>
 </table>
 

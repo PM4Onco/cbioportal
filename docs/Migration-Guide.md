@@ -2,6 +2,20 @@
 
 This page describes various changes deployers will need to make as they deploy newer versions of the portal.
 
+## v6.3 -> v6.4
+- The [v6.4.0](https://github.com/cBioPortal/cbioportal/releases/tag/v6.4.0) release includes database schema changes that aren’t backward compatible. Please review the [Database Migration Guide](https://docs.cbioportal.org/updating-your-cbioportal-installation/#running-the-migration-script) before upgrading.
+
+## v6.2 -> v6.3
+- cBioPortal Database Migration: [v6.3.0](https://github.com/cBioPortal/cbioportal/releases/tag/v6.3.0) introduces breaking changes to the cBioPortal database schema. Please see the [Database Migration Guide](https://docs.cbioportal.org/updating-your-cbioportal-installation/#running-the-migration-script) before upgrading cBioPortal to v6.3.0.
+
+## v6.0 -> v6.1
+- cBioPortal Frontend Package: [v6.1.0](https://github.com/cBioPortal/cbioportal/releases/tag/v6.1.0) replaces JitPack with GitHub Packages for distributing the [frontend package](https://github.com/orgs/cBioPortal/packages?repo_name=cbioportal-frontend). This requires users to authenticate with GitHub when building cBioPortal from source. Check [docs](https://docs.cbioportal.org/deployment/deploy-without-docker/build-from-source/) for detailed instructions.
+
+## v6.0.23 -> v6.0.24
+
+- Redis HTTP Session:
+    - As part of release [v6.0.24](https://github.com/cBioPortal/cbioportal/releases/tag/v6.0.24), Spring Boot has been upgraded to v3.4 which includes some changes to HTTP sessions. It won't affect most standard single-node deployments of cBioPortal, but if you are running multiple replicas and use Redis to manage HTTP sessions, you will need to clear and restart the Redis session server after upgrading your portal. 
+
 ## v5 -> v6
 
 - Override Spring Application Properties:

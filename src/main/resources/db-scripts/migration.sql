@@ -294,7 +294,6 @@ INSERT INTO mutation_count_by_keyword
     GROUP BY g2.`GENETIC_PROFILE_ID` , mutation_event.`KEYWORD` , m2.`ENTREZ_GENE_ID`;
 UPDATE info SET DB_SCHEMA_VERSION="2.2.0";
 
-
 ##version: 2.3.0
 -- ========================== new geneset related tables =============================================
 
@@ -419,9 +418,9 @@ CREATE TABLE `reference_genome_gene` (
 
 INSERT INTO reference_genome_gene (ENTREZ_GENE_ID, CYTOBAND, EXONIC_LENGTH, CHR, REFERENCE_GENOME_ID)
 (SELECT
-	ENTREZ_GENE_ID,
-	CYTOBAND,
-	LENGTH,
+  ENTREZ_GENE_ID,
+  CYTOBAND,
+  LENGTH,
   SUBSTRING_INDEX(
     SUBSTRING_INDEX(
       SUBSTRING_INDEX(
@@ -429,7 +428,7 @@ INSERT INTO reference_genome_gene (ENTREZ_GENE_ID, CYTOBAND, EXONIC_LENGTH, CHR,
       'q', 1),
     'cen', 1),
   ' ', 1),
-	1
+  1
 FROM `gene`);
 
 UPDATE info SET DB_SCHEMA_VERSION="2.4.1";
@@ -854,16 +853,16 @@ UPDATE `info` SET `DB_SCHEMA_VERSION`="2.12.4";
 ##version: 2.12.5
 -- survival data migration
 -- create temporary table to store survival attributes
-CREATE TEMPORARY TABLE IF NOT EXISTS survival_attributes AS 
-  (SELECT DISTINCT Concat(Substr(ATTR_ID, 1, Char_length(ATTR_ID) - 7), 
-                   "_STATUS") AS ATTR_ID 
-   FROM   clinical_attribute_meta 
-   WHERE  ATTR_ID LIKE "%_STATUS" 
-          AND Substr(ATTR_ID, 1, Char_length(ATTR_ID) - 7)IN (SELECT DISTINCT 
-              Substr(ATTR_ID, 1, Char_length(ATTR_ID) - 7) AS 
-              SurvivalDataStatusPrefix 
-              FROM   clinical_attribute_meta 
-              WHERE  ATTR_ID LIKE "%_MONTHS")); 
+CREATE TEMPORARY TABLE IF NOT EXISTS survival_attributes AS
+  (SELECT DISTINCT Concat(Substr(ATTR_ID, 1, Char_length(ATTR_ID) - 7),
+                   "_STATUS") AS ATTR_ID
+   FROM   clinical_attribute_meta
+   WHERE  ATTR_ID LIKE "%_STATUS"
+          AND Substr(ATTR_ID, 1, Char_length(ATTR_ID) - 7)IN (SELECT DISTINCT
+              Substr(ATTR_ID, 1, Char_length(ATTR_ID) - 7) AS
+              SurvivalDataStatusPrefix
+              FROM   clinical_attribute_meta
+              WHERE  ATTR_ID LIKE "%_MONTHS"));
 
 -- mapping to 0/1
 UPDATE clinical_patient SET ATTR_VALUE = CONCAT("1:",ATTR_VALUE) WHERE ATTR_ID in (SELECT ATTR_ID FROM survival_attributes) AND ATTR_VALUE in ('DECEASED','Recurred/Progressed','Recurred','Progressed','Yes','yes','1','PROGRESSION','Event','DEAD OF MELANOMA','DEAD WITH TUMOR','Metastatic Relapse','Localized Relapse');
@@ -932,7 +931,7 @@ UPDATE `info` SET `DB_SCHEMA_VERSION`="2.12.7";
 
 ##version: 2.12.8
 CREATE INDEX idx_mutation_type ON mutation_event (`MUTATION_TYPE`);
-CREATE INDEX idx_cna_type ON cna_event (`ALTERATION`);                                                        
+CREATE INDEX idx_cna_type ON cna_event (`ALTERATION`);
 CREATE INDEX idx_driver_filter ON alteration_driver_annotation (`DRIVER_FILTER`);
 CREATE INDEX idx_driver_tiers_filter ON alteration_driver_annotation (`DRIVER_TIERS_FILTER`);
 UPDATE `info` SET `DB_SCHEMA_VERSION`="2.12.8";
@@ -978,8 +977,6 @@ UPDATE `info` SET `DB_SCHEMA_VERSION`="2.12.12";
 ALTER TABLE `sample` MODIFY COLUMN `STABLE_ID` VARCHAR(63) NOT NULL;
 UPDATE `info` SET `DB_SCHEMA_VERSION`="2.12.13";
 
-
-
 ##version: 2.12.14
 ALTER TABLE `structural_variant` MODIFY COLUMN `SITE1_ENTREZ_GENE_ID` int(11);
 ALTER TABLE `structural_variant` ADD COLUMN `SITE1_REGION` varchar(25) AFTER `SITE1_CHROMOSOME`;
@@ -1021,10 +1018,72 @@ ALTER TABLE `mutation_event` CHANGE COLUMN `ONCOTATOR_PROTEIN_POS_START` `PROTEI
 ALTER TABLE `mutation_event` CHANGE COLUMN `ONCOTATOR_PROTEIN_POS_END` `PROTEIN_POS_END` int(11);
 UPDATE `info` SET `DB_SCHEMA_VERSION`="2.13.0";
 
-
 ##version: 2.13.1
 ALTER TABLE `clinical_event_data` MODIFY COLUMN `VALUE` varchar(3000) NOT NULL;
 CREATE INDEX idx_clinical_event_key ON clinical_event_data (`KEY`);
 CREATE INDEX idx_clinical_event_value ON clinical_event_data (`VALUE`);
 CREATE INDEX idx_sample_stable_id ON sample (`STABLE_ID`);
 UPDATE `info` SET `DB_SCHEMA_VERSION`="2.13.1";
+
+##version: 2.14.0
+
+-- Step 1: Drop foreign key
+
+-- CREATE PROCEDURE DROP_FOREIGN_KEY_IF_EXISTS(IN tableName VARCHAR(64), IN constraintName VARCHAR(64))
+--     BEGIN
+--         IF EXISTS(
+--             SELECT * FROM information_schema.table_constraints
+--             WHERE 
+--                 table_schema    = DATABASE()     AND
+--                 table_name      = tableName      AND
+--                 constraint_name = constraintName AND
+--                 constraint_type = 'FOREIGN KEY')
+--         THEN
+--             SET @query = CONCAT('ALTER TABLE ', tableName, ' DROP FOREIGN KEY ', constraintName, ';');
+--             PREPARE stmt FROM @query; 
+--             EXECUTE stmt; 
+--             DEALLOCATE PREPARE stmt; 
+--         END IF; 
+--     END
+
+DROP PROCEDURE IF EXISTS DROP_FOREIGN_KEY_IF_EXISTS;
+-- This all has to be on a single line for the migrate_db script to parse it correctly
+CREATE PROCEDURE DROP_FOREIGN_KEY_IF_EXISTS(IN tableName VARCHAR(64), IN constraintName VARCHAR(64)) BEGIN IF EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE table_schema = DATABASE() AND table_name = tableName AND constraint_name = constraintName AND constraint_type = 'FOREIGN KEY') THEN SET @query = CONCAT('ALTER TABLE ', tableName, ' DROP FOREIGN KEY ', constraintName); PREPARE stmt FROM @query; EXECUTE stmt; DEALLOCATE PREPARE stmt; END IF; END;
+
+CALL DROP_FOREIGN_KEY_IF_EXISTS('clinical_event_data', 'clinical_event_data_ibfk_1');
+
+DROP PROCEDURE IF EXISTS DROP_FOREIGN_KEY_IF_EXISTS;
+
+-- Step 2: Change datatype of primary key
+ALTER TABLE `clinical_event` MODIFY COLUMN `CLINICAL_EVENT_ID` BIGINT NOT NULL AUTO_INCREMENT;
+
+-- Step 3: Change datatype of foreign key
+ALTER TABLE `clinical_event_data` MODIFY COLUMN `CLINICAL_EVENT_ID` BIGINT NOT NULL;
+
+-- Step 4: Re-add foreign key constraint
+ALTER TABLE `clinical_event_data` ADD CONSTRAINT FOREIGN KEY (`CLINICAL_EVENT_ID`) REFERENCES `clinical_event` (`CLINICAL_EVENT_ID`) ON DELETE CASCADE;
+
+UPDATE `info` SET `DB_SCHEMA_VERSION`="2.14.0";
+
+##version: 2.14.1
+ALTER TABLE `info` ADD COLUMN `DERIVED_TABLE_SCHEMA_VERSION` varchar(24);
+UPDATE `info` SET `DERIVED_TABLE_SCHEMA_VERSION`="1.0.0";
+UPDATE `info` SET `DB_SCHEMA_VERSION`="2.14.1";
+
+##version: 2.14.2
+ALTER TABLE `resource_definition` ADD COLUMN `CUSTOM_METADATA` JSON;
+UPDATE `info` SET `DERIVED_TABLE_SCHEMA_VERSION`="1.0.2";
+UPDATE `info` SET `DB_SCHEMA_VERSION`="2.14.2";
+
+##version: 2.14.3
+DROP TABLE IF EXISTS `cosmic_mutation`;
+UPDATE `info` SET `DB_SCHEMA_VERSION`="2.14.3";
+
+##version: 2.14.4
+-- increase varchar size to accomodate larger event type names
+ALTER TABLE `clinical_event` MODIFY COLUMN `EVENT_TYPE` varchar(50) NOT NULL;
+UPDATE `info` SET `DB_SCHEMA_VERSION`="2.14.4";
+
+##version: 2.14.5
+ALTER TABLE `info` ADD COLUMN `GENE_TABLE_VERSION` varchar(24);
+UPDATE `info` SET `DB_SCHEMA_VERSION`="2.14.5";

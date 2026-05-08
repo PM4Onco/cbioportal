@@ -4,8 +4,8 @@ INSERT INTO type_of_cancer (TYPE_OF_CANCER_ID,NAME,DEDICATED_COLOR,SHORT_NAME,PA
 INSERT INTO `reference_genome` VALUES (1, 'human', 'hg19', 'GRCh37', NULL, 'http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips', '2009-02-01 00:00:00');
 INSERT INTO `reference_genome` VALUES (2, 'human', 'hg38', 'GRCh38', NULL, 'http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips', '2013-12-01 00:00:00');
 
-INSERT INTO cancer_study (CANCER_STUDY_ID,CANCER_STUDY_IDENTIFIER,TYPE_OF_CANCER_ID,NAME,DESCRIPTION,PUBLIC,PMID,CITATION,GROUPS,STATUS,IMPORT_DATE,REFERENCE_GENOME_ID) VALUES(1,'study_tcga_pub','brca','Breast Invasive Carcinoma (TCGA, Nature 2012)','<a href=\"http://cancergenome.nih.gov/\">The Cancer Genome Atlas (TCGA)</a> Breast Invasive Carcinoma project. 825 cases.<br><i>Nature 2012.</i> <a href=\"http://tcga-data.nci.nih.gov/tcga/\">Raw data via the TCGA Data Portal</a>.',1,'23000897,26451490','TCGA, Nature 2012, ...','SU2C-PI3K;PUBLIC;GDAC',0,'2011-12-18 13:17:17+00:00',1);
-INSERT INTO cancer_study (CANCER_STUDY_ID,CANCER_STUDY_IDENTIFIER,TYPE_OF_CANCER_ID,NAME,DESCRIPTION,PUBLIC,PMID,CITATION,GROUPS,STATUS,IMPORT_DATE,REFERENCE_GENOME_ID) VALUES(2,'acc_tcga','acc','Adrenocortical Carcinoma (TCGA, Provisional)','TCGA Adrenocortical Carcinoma; raw data at the <A HREF="https://tcga-data.nci.nih.gov/">NCI</A>.',1,'23000897','TCGA, Nature 2012','SU2C-PI3K;PUBLIC;GDAC',0,'2013-10-12 11:11:15+00:00',1);
+INSERT INTO cancer_study (CANCER_STUDY_ID,CANCER_STUDY_IDENTIFIER,TYPE_OF_CANCER_ID,NAME,DESCRIPTION,PUBLIC,PMID,CITATION,GROUPS,STATUS,IMPORT_DATE,REFERENCE_GENOME_ID) VALUES(1,'study_tcga_pub','brca','Breast Invasive Carcinoma (TCGA, Nature 2012)','<a href=\"http://cancergenome.nih.gov/\">The Cancer Genome Atlas (TCGA)</a> Breast Invasive Carcinoma project. 825 cases.<br><i>Nature 2012.</i> <a href=\"http://tcga-data.nci.nih.gov/tcga/\">Raw data via the TCGA Data Portal</a>.',1,'23000897,26451490','TCGA, Nature 2012, ...','SU2C-PI3K;GDAC',0,'2011-12-18 13:17:17+00:00',1);
+INSERT INTO cancer_study (CANCER_STUDY_ID,CANCER_STUDY_IDENTIFIER,TYPE_OF_CANCER_ID,NAME,DESCRIPTION,PUBLIC,PMID,CITATION,GROUPS,STATUS,IMPORT_DATE,REFERENCE_GENOME_ID) VALUES(2,'acc_tcga','acc','Adrenocortical Carcinoma (TCGA, Provisional)','TCGA Adrenocortical Carcinoma; raw data at the <A HREF="https://tcga-data.nci.nih.gov/">NCI</A>.',1,'23000897','TCGA, Nature 2012','SU2C-PI3K;GDAC',0,'2013-10-12 11:11:15+00:00',1);
 
 INSERT INTO cancer_study_tags (CANCER_STUDY_ID,TAGS) VALUES(1,'{"Analyst": {"Name": "Jack", "Email": "jack@something.com"}, "Load id": 35}');
 INSERT INTO cancer_study_tags (CANCER_STUDY_ID,TAGS) VALUES(2,'{"Load id": 36}');
@@ -49,12 +49,6 @@ INSERT INTO gene (ENTREZ_GENE_ID,HUGO_GENE_SYMBOL,GENETIC_ENTITY_ID,TYPE) VALUES
 INSERT INTO gene (ENTREZ_GENE_ID,HUGO_GENE_SYMBOL,GENETIC_ENTITY_ID,TYPE) VALUES(26155,'NOC2L',14,'protein-coding');
 INSERT INTO gene (ENTREZ_GENE_ID,HUGO_GENE_SYMBOL,GENETIC_ENTITY_ID,TYPE) VALUES(2064,'ERBB2',15,'protein-coding');
 INSERT INTO gene (ENTREZ_GENE_ID,HUGO_GENE_SYMBOL,GENETIC_ENTITY_ID,TYPE) VALUES(2886,'GRB7',16,'protein-coding');
-INSERT INTO cosmic_mutation (COSMIC_MUTATION_ID,PROTEIN_CHANGE,ENTREZ_GENE_ID,COUNT,KEYWORD) VALUES(3677745,'D45A',79501,1,'OR4F5 D45 missense');
-INSERT INTO cosmic_mutation (COSMIC_MUTATION_ID,PROTEIN_CHANGE,ENTREZ_GENE_ID,COUNT,KEYWORD) VALUES(426644,'G145C',79501,1,'OR4F5 G145 missense');
-INSERT INTO cosmic_mutation (COSMIC_MUTATION_ID,PROTEIN_CHANGE,ENTREZ_GENE_ID,COUNT,KEYWORD) VALUES(460103,'P23P',148398,1,'SAMD11 P23 silent');
-INSERT INTO cosmic_mutation (COSMIC_MUTATION_ID,PROTEIN_CHANGE,ENTREZ_GENE_ID,COUNT,KEYWORD) VALUES(4010395,'S146S',26155,1,'NOC2L S146 silent');
-INSERT INTO cosmic_mutation (COSMIC_MUTATION_ID,PROTEIN_CHANGE,ENTREZ_GENE_ID,COUNT,KEYWORD) VALUES(1290240,'M1T',26155,1,'NOC2L truncating');
-INSERT INTO cosmic_mutation (COSMIC_MUTATION_ID,PROTEIN_CHANGE,ENTREZ_GENE_ID,COUNT,KEYWORD) VALUES(4010425,'Q197*',26155,1,'NOC2L truncating');
 
 INSERT INTO gene_alias (ENTREZ_GENE_ID,GENE_ALIAS) VALUES (207,'AKT alias');
 INSERT INTO gene_alias (ENTREZ_GENE_ID,GENE_ALIAS) VALUES (207,'AKT alias2');

@@ -4,7 +4,20 @@ app.name=cbioportal
 # Spring Boot Properties 2.7.14
 spring.mvc.pathmatch.matching-strategy = ANT_PATH_MATCHER
 
+#Clickhouse Enabled
+# Set to True to enable Clickhouse (Warning Experimental Features)
+#clickhouse_mode=false
+
 # database
+# Properties for when Clickhouse mode is enabled (Warning: Experimental)
+#spring.datasource.mysql.url=jdbc:mysql://localhost:3306/cbioportal?useSSL=false
+#spring.datasource.mysql.username=cbio
+#spring.datasource.mysql.password=P@ssword1
+#spring.datasource.mysql.driver-class-name=com.mysql.jdbc.Driver
+#spring.datasource.clickhouse.url=jdbc:ch://localhost:8443/cbioportal
+#spring.datasource.clickhouse.username=dummy
+#spring.datasource.clickhouse.password=dummy
+#spring.datasource.clickhouse.driver-class-name=com.clickhouse.jdbc.ClickHouseDriver
 spring.datasource.url=jdbc:mysql://localhost:3306/cbioportal?useSSL=false
 spring.datasource.username=cbio
 spring.datasource.password=P@ssword1
@@ -56,6 +69,9 @@ skin.show_tutorials_tab=true
 skin.show_faqs_tab=true
 skin.show_tools_tab=true
 skin.show_about_tab=true
+# We kindly ask for your support by enabling the "Donate" button
+# https://cbioportal.org/donate
+# skin.show_donate_button=true
 
 # settings controlling the whats new blurb
 skin.right_nav.whats_new_blurb=<p> &bull;<a href="news.jsp"> <b>New data and features released</b></a><br/> &bull;<a href="tools.jsp"> <b>New tools released</b></a> </p> <form action="https://groups.google.com/group/cbioportal-news/boxsubscribe"> &nbsp;&nbsp;&nbsp;&nbsp;<b>Sign up for low-volume email news alerts:</b></br> &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email"> <input type="submit" name="sub" value="Subscribe"> </form> &nbsp;&nbsp;&nbsp;&nbsp;<b>Or follow us <a href="http://www.twitter.com/cbioportal"><i>@cbioportal</i></a> on Twitter</b>
@@ -100,10 +116,14 @@ skin.study_view.link_text=To build your own case set, try out our enhanced Study
 # skin.mutation_table.namespace_column.show_by_default=true
 
 # controls which columns from the mutation tables are immediately visible in mutation tables
-# skin.results_view.mutation_table.columns.show_on_init=Sample Id,Protein Change,Annotation,Mutation Type,Copy #,Cosmic,# Mut in Sample
-# skin.patient_view.mutation_table.columns.show_on_init=Gene,Protein Change,Annotation,Mutation Type,Copy #,Cosmic,# Mut in Sample
+# skin.results_view.mutation_table.columns.show_on_init=Sample Id,Protein Change,Annotation,Mutation Type,Copy #,# Mut in Sample
+# skin.patient_view.mutation_table.columns.show_on_init=Gene,Protein Change,Annotation,Mutation Type,Copy #,# Mut in Sample
 # skin.patient_view.copy_number_table.columns.show_on_init=Gene,CNA,Annotation,Cytoband,Cohort
 # skin.patient_view.structural_variant_table.columns.show_on_init=Gene 1,Gene2,Status,Annotation,Variant Class,Event Info,Connection Type
+
+# controls which column from the mutation tables, CNA tables, and SV tables is used to sort by default
+# skin.results_view.tables.default_sort_column=Annotation
+# skin.patient_view.tables.default_sort_column=Annotation
 
 # setting controlling the home page
 ## enable this to show studies for which the user does not have permission (will appear greyed out and cannot be analyzed in study view or results view). 
@@ -115,9 +135,6 @@ skin.study_view.link_text=To build your own case set, try out our enhanced Study
 
 ## setting controlling whether Download tabs and download/copy-to-clipboard controls should be shown
 # skin.hide_download_controls=false
-
-## setting controlling which name should be used to display the authenticated user (email, or username)
-# skin.user_display_name=email
 
 ## enable and set this property to specify a study group to be used to identify public studies for which no specific authorization entries are needed in the `authorities` table
 # always_show_study_group=
@@ -166,17 +183,12 @@ oncokb.token=
 
 # Enable "cBioPortal>=" driver annotation sources in the settings menu of Results View (true, false)
 show.cbioportal=true
-# Enable "COSMIC>=" driver annotation sources in the settings menu of Results View (true, false)
-show.cosmic=true
 
 # Enable Chang's hotspot list (true, false)
 show.hotspot=true
 
 # Enable Civic variant annotation (true, false)
 show.civic=true
-
-# Link to My Cancer Genome. Please disable (set to false) when using cBioPortal with patient identifiable data due My Cancer Genome license restrictions.
-mycancergenome.show=true
 
 # Enable transcript switch dropdown (true, false)
 # show.transcript_dropdown=false
@@ -219,7 +231,9 @@ pathway_commons.url=http://www.pathwaycommons.org/pc2
 bitly.access.token=
 
 # google analytics
-google_analytics_profile_id=
+# Note: use one or the other of these properties, not both
+# google_analytics_profile_id=
+# google_tag_manager_id=
 
 # genomespace linking
 genomespace=true
@@ -234,6 +248,9 @@ session.service.url=https://cbioportal-session-service.herokuapp.com/session_ser
 # if basic authentication is enabled on session service one should set:
 #session.service.user=
 #session.service.password=
+
+# Publishing Virtual Studies
+#session.endpoint.publisher-api-key=
 
 # disabled tabs, | delimited
 # possible values: cancer_types_summary, mutual_exclusivity, comparison, plots, mutations, co_expression, enrichments, survival, network, download, bookmark, IGV
@@ -252,8 +269,10 @@ ucsc.build=hg19
 oncoprint.defaultview=patient
 
 # OncoPrint driver mutation annotations
-# oncoprint.custom_driver_annotation.binary.menu_label=Custom driver annotation
-# oncoprint.custom_driver_annotation.tiers.menu_label=Custom driver tiers
+# oncoprint.custom_driver_annotation.binary.menu_label=Custom Driver
+# oncoprint.custom_driver_annotation.binary.menu_description=Custom driver annotation
+# oncoprint.custom_driver_annotation.tiers.menu_label=Custom Driver Tiers
+# oncoprint.custom_driver_annotation.tiers.menu_description=Custom driver tiers
 # oncoprint.custom_driver_annotation.binary.default=true
 # oncoprint.custom_driver_annotation.tiers.default=true
 oncoprint.oncokb.default=true
@@ -291,6 +310,7 @@ persistence.cache_type=no-cache
 #redis.password=
 #redis.ttl_mins=10000
 #redis.clear_on_startup=true
+#redis.health_check_interval_ms=30000
 
 # Ehcache properties
 #ehcache.xml_configuration=/ehcache.xml
@@ -391,8 +411,6 @@ logging.level.root=INFO
 
 ## Redis HTTP Session Store
 # Redis Session
-## Comment out the line below to enable redis caching
-spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
 #spring.data.redis.host=localhost
 #spring.data.redis.port=6379
 
@@ -409,11 +427,22 @@ server.max-http-request-header-size=16384
 #sentry.exception-resolver-order=-2147483647
 
 # Swagger Configuration
-springdoc.swagger-ui.disable-swagger-default-url=true
-springdoc.swagger-ui.path=/api/swagger-ui
-springdoc.api-docs.path=/api/v2/api-docs
+#springdoc.swagger-ui.disable-swagger-default-url=true
+#springdoc.swagger-ui.path=/api/swagger-ui
+#springdoc.api-docs.path=/api/v2/api-docs
 
 # Development Configuration
 spring.devtools.restart.enabled=false
 
+## Study Tag functionality
+#enable_study_tags=true|false
+
+## Custom Buttons
+# download_custom_buttons_json=classpath:custom_buttons/download_custom_button_avm.json
+
+# Study Data Export
+feature.study.export=false
+feature.study.export.timeout_ms=600000
+
 # EOL - Do not delete the following lines
+
