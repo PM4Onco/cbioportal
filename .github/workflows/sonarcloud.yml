@@ -9,6 +9,7 @@ jobs:
   build:
     name: sonarcloud
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request_target' }}
     env:
       TEST_DB_CLICKHOUSE_PASSWORD: ${{ secrets.TEST_DB_CLICKHOUSE_PASSWORD }}
       TEST_DB_MYSQL_PASSWORD: ${{ secrets.TEST_DB_MYSQL_PASSWORD }}
