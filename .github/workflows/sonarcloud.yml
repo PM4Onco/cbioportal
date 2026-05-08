@@ -44,11 +44,21 @@ jobs:
         run: |
             echo "127.0.0.1 host.testcontainers.internal" | sudo tee -a /etc/hosts
       - name: 'Run integration tests'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD != '' }}
         run: |
           mvn verify -Pintegration-test
+      - name: 'Skip integration tests (missing clickhouse secret)'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD == '' }}
+        run: |
+          echo "Skipping integration tests: TEST_DB_CLICKHOUSE_PASSWORD is not configured."
       - name: 'Run e2e tests'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD != '' }}
         run: |
           mvn verify -Pe2e-test
+      - name: 'Skip e2e tests (missing clickhouse secret)'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD == '' }}
+        run: |
+          echo "Skipping e2e tests: TEST_DB_CLICKHOUSE_PASSWORD is not configured."
       - name: Code Coverage
         env:
           SONAR_TOKEN:  de1b5cc660cd210dde840f492c371da6cc801763

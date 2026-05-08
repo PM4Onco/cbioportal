@@ -79,10 +79,20 @@ jobs:
         run: |
           mvn -U -Ppublic test -Ddb.test.username=cbio_user -Ddb.test.password=somepassword
       - name: 'Run integration tests separately'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD != '' }}
         working-directory: ./cbioportal
         run: |
           mvn verify -Pintegration-test
+      - name: 'Skip integration tests (missing clickhouse secret)'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD == '' }}
+        run: |
+          echo "Skipping integration tests: TEST_DB_CLICKHOUSE_PASSWORD is not configured."
       - name: 'Run e2e tests separately'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD != '' }}
         working-directory: ./cbioportal
         run: |
           mvn verify -Pe2e-test
+      - name: 'Skip e2e tests (missing clickhouse secret)'
+        if: ${{ env.TEST_DB_CLICKHOUSE_PASSWORD == '' }}
+        run: |
+          echo "Skipping e2e tests: TEST_DB_CLICKHOUSE_PASSWORD is not configured."
